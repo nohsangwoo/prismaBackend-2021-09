@@ -2,9 +2,9 @@
   "name": "instaclone",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "",
+    "dev": "nodemon --exec node server.js --delay 2",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/nohsangwoo/prismaBackend-2021-09/issues"
   },
-  "homepage": "https://github.com/nohsangwoo/prismaBackend-2021-09#readme"
+  "homepage": "https://github.com/nohsangwoo/prismaBackend-2021-09#readme",
+  "dependencies": {
+    "apollo-server": "^3.3.0",
+    "graphql": "^15.5.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
 }
