@@ -3,6 +3,7 @@ import { ApolloServer, gql } from "apollo-server";
 // The GraphQL schema
 const typeDefs = gql`
   type Movie {
+    id: Int
     title: String
     year: Int
   }
@@ -23,11 +24,11 @@ const typeDefs = gql`
 // A map of functions which return data for the schema.
 const resolvers = {
   Query: {
-    hello: () => "hello~",
+    hello: () => "hello~"
   },
   Query: {
     movies: () => [],
-    movie: () => ({ title: "hello", year: 1989 }),
+    movie: () => ({ title: "hello", year: 1989 })
   },
   Mutation: {
     createMovie: (root, args, context, info) => {
@@ -43,13 +44,13 @@ const resolvers = {
       //   console.log("context, ", context);
       //   console.log("info, ", info);
       return true;
-    },
-  },
+    }
+  }
 };
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers,
+  resolvers
 });
 
 server.listen().then(({ url }) => {

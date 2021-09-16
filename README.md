@@ -60,3 +60,11 @@
   ref: https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
   (db부터 pg-admin 까지 패키지로 다운가능)
 - .env에 db연결 정보 입력
+
+## prisma schema 작성에 도움을 주는 prisma extension 설치
+
+- 설치 후 settings.json 설정 적용
+
+## prisma schema 작성
+
+- ref: https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases/using-prisma-migrate-typescript-postgres/
