@@ -39,3 +39,24 @@
 ## graphql usage
 
 - 간단한 graphql 사용법 학습
+
+## typeorm
+
+## prisma setup
+
+- npm install prisma typescript ts-node @types/node --save-dev
+- npx prisma로 설치 잘됐는지 확인가능
+- tsconfig.json 작성 및 outdir 폴더 생성(js로 컴파일된 파일 모아두는 곳)
+- npx prisma init
+  prisma - schema.prisma 파일과, .env 파일이 생성됨
+
+## DB연결을 위해 database 선택해서 설치 - postgresql
+
+- mac
+  postgres app
+  postico
+- Window
+  postgresql 서버 부터 다운받아야 하는 경우
+  ref: https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+  (db부터 pg-admin 까지 패키지로 다운가능)
+- .env에 db연결 정보 입력
