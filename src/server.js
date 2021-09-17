@@ -20,6 +20,7 @@ const typeDefs = gql`
   type Mutation {
     createMovie(title: String!, year: Int!, genre: String): Movie
     deleteMovie(id: Int!, title: String): Movie
+    updateMovie(id: Int!, year: Int!): Movie
   }
 `;
 
@@ -50,6 +51,16 @@ const resolvers = {
       return client.movie.delete({
         where: {
           id
+        }
+      });
+    },
+    updateMovie: (_, { id, year }) => {
+      return client.movie.update({
+        where: {
+          id
+        },
+        data: {
+          year
         }
       });
     }

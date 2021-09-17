@@ -98,3 +98,6 @@
 
 - read
   ref: https://www.prisma.io/docs/concepts/components/prisma-client/crud#read
+
+- update
+  ref: https://www.prisma.io/docs/concepts/components/prisma-client/crud#update
