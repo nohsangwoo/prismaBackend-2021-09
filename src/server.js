@@ -14,7 +14,6 @@ const typeDefs = gql`
   }
 
   type Query {
-    "A simple type for getting started!"
     movies: [Movie]
     movie(id: Int!): Movie
   }
