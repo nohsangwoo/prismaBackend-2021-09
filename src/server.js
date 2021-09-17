@@ -20,18 +20,25 @@ const typeDefs = gql`
   }
   type Mutation {
     createMovie(title: String!, year: Int!, genre: String): Movie
-    deleteMovie(id: String!): Boolean
+    deleteMovie(id: Int!, title: String): Movie
   }
 `;
 
 // A map of functions which return data for the schema.
+
 const resolvers = {
   Query: {
     movies: () => client.movie.findMany(),
-    movie: (_, { id }) => ({ title: "Hello", year: 2021 })
+    movie: (_, { id }) =>
+      client.movie.findUnique({
+        where: {
+          id
+        }
+      })
   },
+  //
   Mutation: {
-    createMovie: (root, { title, year, genre }, context, info) => {
+    createMovie: (root, { title, year, genre }) => {
       return client.movie.create({
         data: {
           title,
@@ -41,13 +48,11 @@ const resolvers = {
       });
     },
     deleteMovie: (root, { id }, context, info) => {
-      // client.movie.deleteMovie({
-      //   data: {
-      //     id
-      //   }
-      // });
-
-      return true;
+      return client.movie.delete({
+        where: {
+          id
+        }
+      });
     }
   }
 };

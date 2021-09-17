@@ -1,24 +1,12 @@
 {
-  "name": "instaclone",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "name": "script",
+  "license": "MIT",
   "scripts": {
-    "dev": "nodemon --delay 2",
-    "migrate": "npx prisma migrate dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon",
+    "tsdevbase": "ts-node ./src/server.ts",
+    "tsdev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' ./src/server.ts --delay 2",
+    "migrate": "npx prisma migrate dev"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nohsangwoo/prismaBackend-2021-09.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/nohsangwoo/prismaBackend-2021-09/issues"
-  },
-  "homepage": "https://github.com/nohsangwoo/prismaBackend-2021-09#readme",
   "dependencies": {
     "@prisma/client": "^3.0.2",
     "apollo-server": "^3.3.0",
@@ -27,11 +15,15 @@
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@babel/node": "^7.15.4",
+    "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.6",
-    "@types/node": "^16.9.1",
+    "@types/node": "15.12.4",
     "nodemon": "^2.0.12",
-    "prisma": "^3.0.2",
-    "ts-node": "^10.2.1",
+    "prisma": "3.0.2",
+    "ts-node": "10.2.1",
     "typescript": "^4.4.3"
+  },
+  "engines": {
+    "node": ">=12.2.0"
   }
 }

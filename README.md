@@ -95,3 +95,6 @@
 
 - create
   ref: https://www.prisma.io/docs/concepts/components/prisma-client/crud#create
+
+- read
+  ref: https://www.prisma.io/docs/concepts/components/prisma-client/crud#read
