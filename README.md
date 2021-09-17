@@ -78,3 +78,20 @@
 - 2021.09.16기준 마이그레이트 명령어(추후 변경될수 있음)
   npx prisma migrate dev --name init
   (dev명령어는 개발환경에서 마이그레이트를 진행할 것을 명시해줌)
+  npx prisma migrate dev init (일단 name빼고 입력함)
+  맨처음에만 init 넣어주고 다음번 migrate시에는
+  npx prisma migrate dev 만 입력
+
+## package.json에 migrate 실행 명령어 입력
+
+## prisma로 DB제어하기
+
+- ref: https://www.prisma.io/docs/concepts/components/prisma-client
+- @prisma/client로 제어한다.
+
+## prisma schema를 잘 설계했다면 typeDef과 schema를 일치 시켜야한다.
+
+## CRUD
+
+- create
+  ref: https://www.prisma.io/docs/concepts/components/prisma-client/crud#create
