@@ -68,3 +68,13 @@
 ## prisma schema 작성
 
 - ref: https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases/using-prisma-migrate-typescript-postgres/
+
+## prisma migrate
+
+- 스키마 작성 후 마이그레이트 작업을 해서 DB와 스키마모델을 동기화 해줘야함
+  (schema.prisma파일을 기준으로 알아서 DB구성을 맞춰준다)
+- ref: https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases/using-prisma-migrate-typescript-postgres/
+
+- 2021.09.16기준 마이그레이트 명령어(추후 변경될수 있음)
+  npx prisma migrate dev --name init
+  (dev명령어는 개발환경에서 마이그레이트를 진행할 것을 명시해줌)

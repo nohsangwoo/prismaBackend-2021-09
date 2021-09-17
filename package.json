@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/nohsangwoo/prismaBackend-2021-09#readme",
   "dependencies": {
+    "@prisma/client": "^3.0.2",
     "apollo-server": "^3.3.0",
     "graphql": "^15.5.3"
   },
