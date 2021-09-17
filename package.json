@@ -5,9 +5,12 @@
     "dev": "nodemon",
     "tsdevbase": "ts-node ./src/server.ts",
     "tsdev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' ./src/server.ts --delay 2",
-    "migrate": "npx prisma migrate dev"
+    "migrate": "npx prisma migrate dev",
+    "studio": "npx prisma studio"
   },
   "dependencies": {
+    "@graphql-tools/load-files": "^6.4.0",
+    "@graphql-tools/utils": "^8.2.2",
     "@prisma/client": "^3.0.2",
     "apollo-server": "^3.3.0",
     "graphql": "^15.5.3"

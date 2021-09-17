@@ -101,3 +101,23 @@
 
 - update
   ref: https://www.prisma.io/docs/concepts/components/prisma-client/crud#update
+
+## prisma studio
+
+- DB 관리자 페이지
+- npx prisma studio
+
+## 프로젝트 구조 관리(dir) - divide and conquer
+
+- graphql-tools를 이용한다.
+
+## graphql-tools
+
+- ref: https://www.graphql-tools.com/docs/schema-merging#print-merged-typedefs
+  (필요한 모듈은 직접 설치해서 사용하면 됨)
+  여러 merge 방법중 prin merged typeDefs 방법을 사용한다.
+
+## merge schema
+
+- 파일명을 규칙에 맞춰 설정해주면 된다.
+  (작업해야함)
