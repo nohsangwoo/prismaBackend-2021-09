@@ -137,3 +137,7 @@ divide and conquer
 ```
 require("dotenv").config();
 ```
+
+## reset for new Start!
+
+remove directory that prisma and src/movie
