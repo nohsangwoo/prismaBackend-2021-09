@@ -141,3 +141,9 @@ require("dotenv").config();
 ## reset for new Start!
 
 remove directory that prisma and src/movie
+
+## prisma init and migrate again
+
+## create Account
+
+- not yet, it will
