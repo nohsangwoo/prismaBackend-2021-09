@@ -1,3 +1,7 @@
+// import dotenv from "dotenv";
+// dotenv.config();
+require("dotenv").config(); // 위 import 방식과 같은 방법
+
 import { ApolloServer } from "apollo-server";
 import schema from "./schema";
 
@@ -7,6 +11,9 @@ const server = new ApolloServer({
   schema
 });
 
-server.listen().then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
+const PORT = process.env.PORT;
+
+server.listen(PORT).then(props => {
+  // console.log("props", props);
+  console.log(`🚀 Server ready at ${props.url}`);
 });

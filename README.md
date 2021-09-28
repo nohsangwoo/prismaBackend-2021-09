@@ -125,3 +125,12 @@
 ## makeExecutableSchema로 schema관련 내용 묶어주기
 
 divide and conquer
+
+## dotenv
+
+- npm install dotenv
+- and inport server of the top with this command
+
+```
+require("dotenv").config();
+```
