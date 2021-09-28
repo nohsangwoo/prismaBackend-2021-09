@@ -42,11 +42,14 @@
 
 ## typeorm
 
-## prisma setup
+## install prisma
 
 - npm install prisma typescript ts-node @types/node --save-dev
 - npx prisma로 설치 잘됐는지 확인가능
 - tsconfig.json 작성 및 outdir 폴더 생성(js로 컴파일된 파일 모아두는 곳)
+
+## prisma init
+
 - npx prisma init
   prisma - schema.prisma 파일과, .env 파일이 생성됨
 
