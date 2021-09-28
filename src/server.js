@@ -1,11 +1,10 @@
 import { ApolloServer } from "apollo-server";
-import { typeDefs, resolvers } from "./schema";
+import schema from "./schema";
 
 // A map of functions which return data for the schema.
 
 const server = new ApolloServer({
-  typeDefs,
-  resolvers
+  schema
 });
 
 server.listen().then(({ url }) => {

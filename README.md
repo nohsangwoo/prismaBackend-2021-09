@@ -121,3 +121,7 @@
 
 - 파일명을 규칙에 맞춰 설정해주면 된다.
   (작업해야함)
+
+## makeExecutableSchema로 schema관련 내용 묶어주기
+
+divide and conquer
