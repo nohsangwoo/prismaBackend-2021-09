@@ -152,4 +152,14 @@ remove directory that prisma and src/movie
 
 ## create Account
 
+## bcrypt를 이용하여 암호 해시화 하기
+
+- ref: https://www.npmjs.com/package/bcrypt
+- bcrypt가 password hashing 방법으로 추천되는 이유
+  https://velog.io/@kylexid/%EC%99%9C-bcrypt-%EC%95%94%ED%98%B8%ED%99%94-%EB%B0%A9%EC%8B%9D%EC%9D%B4-%EC%B6%94%EC%B2%9C%EB%90%98%EC%96%B4%EC%A7%88%EA%B9%8C
+- npm i bcrypt
+- doc보면 해싱 하는법과 해싱된 값을 로그인시 비교하는 방법이 나와있음
+
+## createAccount시 username과 email이 기존 DB에 존재할때 에러 를 생성하고 해당 에러를 요청에대한 응답으로 처리
+
 ## seeProfile
