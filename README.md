@@ -146,4 +146,4 @@ remove directory that prisma and src/movie
 
 ## create Account
 
-- not yet, it will
+## seeProfile
