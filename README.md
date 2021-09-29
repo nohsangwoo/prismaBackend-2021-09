@@ -162,4 +162,26 @@ remove directory that prisma and src/movie
 
 ## createAccount시 username과 email이 기존 DB에 존재할때 에러 를 생성하고 해당 에러를 요청에대한 응답으로 처리
 
+## login
+
+- compare password use bcrypt
+- if correnct password then return token that create by jsonwebtoken
+
+## jsonwebtoken
+
+- ref: https://www.npmjs.com/package/jsonwebtoken
+- npm install jsonwebtoken
+
+1. 로그인시 비밀번호가 같으면 jsonwebtoken으로 토큰을 생성하여 DB에 저장하고 로그인한 유저쪽 client로 token을 반환해준다.
+2. 그 다음 로그인한 유저는 브라우저에 token을 저장한다.
+3. 로그인한 유저가 로그인한 상태인지 본인인지 확인을 token으로 하는데 이때 저장했던 token을 백엔드로 같이보내서 요청을하고
+4. 백엔드는 전달받은 token이 로그인시 저장해뒀던 token과 비교해서 같으면 로그인된 유저라고 판단 후 작업을 시행하고 다르면 작업을 거절한다(이때 작업은 주로 DB접근 관련 작업..)
+
+- 토큰 만드는데 사용되는 jwt.sign의 첫번째 인자는 아무거나 넣어도 되는데 두번째 인자는 비밀키를 입력해야함 아무도 알려주면 안됨 그래서 해당 값을 .env로 뺀다
+- 비밀키 생성해주는 사이트
+  https://randomkeygen.com/
+  CodeIgniter Encryption Keys - Can be used for any other 256-bit key requirement. 에서 사용
+- jsonwebtoken npm 에서 확인해보면 언제까지 유효하게 할건지 기간도 정할수 있다.
+- jwt.io 에서 jwt관련 각종 정보를 확인할 수 있다
+
 ## seeProfile
