@@ -1,5 +1,4 @@
 import { gql } from "apollo-server-core";
-
 export default gql`
   type User {
     id: String!
@@ -17,6 +16,7 @@ export default gql`
       userName: String!
       email: String!
       password: String!
+      test: String
     ): User
   }
   type Query {

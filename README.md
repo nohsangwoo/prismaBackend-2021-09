@@ -144,6 +144,12 @@ remove directory that prisma and src/movie
 
 ## prisma init and migrate again
 
+## prisma CRUD
+
+- ref: https://www.prisma.io/docs/concepts/components/prisma-client/crud
+
+- ref: https://www.prisma.io/docs/reference/api-reference/prisma-client-reference
+
 ## create Account
 
 ## seeProfile
