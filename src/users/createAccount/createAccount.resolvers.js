@@ -1,5 +1,6 @@
-import client from "../../client";
 import bcrypt from "bcrypt";
+import client from "../../client";
+
 export default {
   Mutation: {
     createAccount: async (
@@ -7,8 +8,6 @@ export default {
       { firstName, lastName, userName, email, password }
     ) => {
       try {
-        // check if userName  or email are already on DB.
-        // because they are(userName and email) unique type.
         const existingUser = await client.user.findFirst({
           where: {
             OR: [
@@ -21,30 +20,27 @@ export default {
             ]
           }
         });
-        // 계정생성시 유저이름과 이메일이 기존에 존재한다면 에러를 뿜어준다.
         if (existingUser) {
-          throw new Error("This username/email is already taken.");
+          throw new Error("This userName/password is already taken.");
         }
         const uglyPassword = await bcrypt.hash(password, 10);
-
-        /*
-        const user = await client.user.create({
-            ...
-        return user
-        와 같은 의미
-        */
-
-        return client.user.create({
+        await client.user.create({
           data: {
-            firstName,
-            lastName,
             userName,
             email,
+            firstName,
+            lastName,
             password: uglyPassword
           }
         });
+        return {
+          ok: true
+        };
       } catch (e) {
-        return e;
+        return {
+          ok: false,
+          error: e.message || "Cant create account."
+        };
       }
     }
   }

@@ -1,7 +1,7 @@
-import { gql } from "apollo-server";
+import { gql } from "apollo-server-core";
 
 export default gql`
-  type createAccountresult {
+  type createAccountResult {
     ok: Boolean!
     error: String
   }
@@ -12,6 +12,6 @@ export default gql`
       userName: String!
       email: String!
       password: String!
-    ): createAccountresult
+    ): createAccountResult
   }
 `;

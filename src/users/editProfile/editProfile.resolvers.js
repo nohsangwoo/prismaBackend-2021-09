@@ -1,5 +1,10 @@
 export default {
   Mutation: {
-    editProfile: () => console.log("hi")
+    editProfile: (_, { firstName, lastName, userName, email, password }) => {
+      return {
+        ok: false,
+        error: "non"
+      };
+    }
   }
 };
