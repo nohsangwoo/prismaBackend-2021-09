@@ -1,20 +1,25 @@
 import client from "../../client";
+import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 export default {
   Mutation: {
     editProfile: async (
       _,
-      { firstName, lastName, userName, email, password }
+      { firstName, lastName, userName, email, password, token }
     ) => {
-      console.log(firstName, lastName, userName, email, password);
+      const verifiedTotken = await jwt.verify(
+        token,
+        process.env.JWT_SECRET_KEY
+      );
+
       let uglyPassword = null;
       if (password) {
         uglyPassword = await bcrypt.hash(password, 10);
       }
 
-      const ok = client.user.update({
+      const ok = await client.user.update({
         where: {
-          id: 1
+          id: verifiedTotken.id
         },
         data: {
           firstName,
