@@ -188,4 +188,8 @@ remove directory that prisma and src/movie
 
 ## Divide and counquer
 
+## editProfile
+
+- 프리즈마는 update시 undefined값이 들어가면 자동으로 업데이트 해주지 않는다(원래는 예외처리 해줘야함)
+
 ## seeProfile

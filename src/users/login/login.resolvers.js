@@ -12,8 +12,6 @@ export default {
           }
         });
 
-        // const user = await client.user.findFirst({ where: { userName } });
-
         // 일단 유저가 존재하는지 체크
         if (!user) {
           return {
