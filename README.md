@@ -184,4 +184,6 @@ remove directory that prisma and src/movie
 - jsonwebtoken npm 에서 확인해보면 언제까지 유효하게 할건지 기간도 정할수 있다.
 - jwt.io 에서 jwt관련 각종 정보를 확인할 수 있다
 
+## Reactor that direct structure
+
 ## seeProfile
