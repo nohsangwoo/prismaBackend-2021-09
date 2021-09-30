@@ -1,5 +1,4 @@
-import client from "../client";
-
+import client from "../../client";
 export default {
   Query: {
     seeProfile: async (_, { userName }) => {

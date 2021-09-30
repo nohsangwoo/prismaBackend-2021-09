@@ -186,4 +186,6 @@ remove directory that prisma and src/movie
 
 ## Reactor that direct structure
 
+## Divide and counquer
+
 ## seeProfile
