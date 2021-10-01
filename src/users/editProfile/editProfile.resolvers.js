@@ -5,8 +5,14 @@ export default {
   Mutation: {
     editProfile: async (
       _,
-      { firstName, lastName, userName, email, password, token }
+      { firstName, lastName, userName, email, password },
+      context,
+      info
     ) => {
+      const { authorization } = context;
+      console.log(context);
+      let token = "null";
+      return;
       const verifiedTotken = await jwt.verify(
         token,
         process.env.JWT_SECRET_KEY

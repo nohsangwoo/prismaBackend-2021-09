@@ -194,4 +194,19 @@ remove directory that prisma and src/movie
 
 ## DB제어시 권한 확인하고 제어 with token verify
 
+- 첫번째 방법으로 일단 token을 graphql api argument로 같이 보내는 방법을 사용한다.
+
+## token 보내는 방식 with http headers
+
+- 매번 token을 graphq api arg로 보내기엔 번거롭기에 http headers로 받는 방법을 구현한다.
+- ref: https://en.wikipedia.org/wiki/List_of_HTTP_header_fields
+  목록중 response 부분에 정보가 있다.
+
+## graphQl context
+
+- contet에 넣어둔 정보는 모든 graphql API에서 공유가능하다.
+- graphql context에 headers를 넣어둔다.
+- apollo-server생성하는 server.js에서 context부분을 담당한다.
+- 백엔드 내부에서 context작동을 하는지 확인 및 테스트
+
 ## seeProfile

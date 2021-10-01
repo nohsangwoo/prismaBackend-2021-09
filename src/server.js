@@ -8,7 +8,11 @@ import schema from "./schema";
 // A map of functions which return data for the schema.
 
 const server = new ApolloServer({
-  schema
+  schema,
+  context: {
+    authorization:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjMzMDUzMTg2fQ.L7SaKHLWbCernpyDvfsPRrvJONw1IQQb_ag915wzMmc"
+  }
 });
 
 const PORT = process.env.PORT;
