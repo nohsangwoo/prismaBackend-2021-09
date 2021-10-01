@@ -204,9 +204,13 @@ remove directory that prisma and src/movie
 
 ## graphQl context
 
-- contet에 넣어둔 정보는 모든 graphql API에서 공유가능하다.
-- graphql context에 headers를 넣어둔다.
-- apollo-server생성하는 server.js에서 context부분을 담당한다.
-- 백엔드 내부에서 context작동을 하는지 확인 및 테스트
+- contet에 넣어둔 정보는 모든 resolvers(graphql API)의 세번째 agr에서 공유가능하다.
+- server.js의 apollo-server객체를 생성할때 context부분 설정이 가능하다.
+- graphql context에 headers를 넣어두고 token을 받는 방식으로 해결한다.
+
+## graphql context test
+
+- apollo-server안 context에 임의 변수를 넣어두고
+  모든 resolvers에서 context받는 arg를 확인하여 잘 동작하는지 확인한다.
 
 ## seeProfile
