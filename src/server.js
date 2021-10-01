@@ -9,9 +9,11 @@ import schema from "./schema";
 
 const server = new ApolloServer({
   schema,
-  context: {
-    authorization:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjMzMDUzMTg2fQ.L7SaKHLWbCernpyDvfsPRrvJONw1IQQb_ag915wzMmc"
+  context: ({ req }) => {
+    const token = String(req.headers.authorization) || "";
+    return {
+      token
+    };
   }
 });
 

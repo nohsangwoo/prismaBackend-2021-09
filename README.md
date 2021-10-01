@@ -212,5 +212,8 @@ remove directory that prisma and src/movie
 
 - apollo-server안 context에 임의 변수를 넣어두고
   모든 resolvers에서 context받는 arg를 확인하여 잘 동작하는지 확인한다.
+- ref: https://www.apollographql.com/docs/apollo-server/security/authentication/#putting-authenticated-user-info-on-the-context
+
+## get token from headers
 
 ## seeProfile

@@ -9,10 +9,7 @@ export default {
       context,
       info
     ) => {
-      const { authorization } = context;
-      console.log(context);
-      let token = "null";
-      return;
+      const { token } = context;
       const verifiedTotken = await jwt.verify(
         token,
         process.env.JWT_SECRET_KEY
