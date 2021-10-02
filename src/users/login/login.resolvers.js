@@ -4,7 +4,6 @@ import client from "../../client";
 export default {
   Mutation: {
     login: async (_, { userName, password }) => {
-      console.log("login activate");
       try {
         const user = await client.user.findFirst({
           where: {
@@ -20,10 +19,10 @@ export default {
           };
         }
 
-        console.log("user", user);
+        // console.log("user", user);
         // 유저 존재하면 bcrypt를 이용하여 해싱된 패스워드와 비교해서 동일한 패스워드인지 비교한다.
         const passwordOk = await bcrypt.compare(password, user.password);
-        console.log("passwordOk", passwordOk);
+        // console.log("passwordOk", passwordOk);
         if (!passwordOk) {
           return {
             ok: false,
@@ -38,7 +37,7 @@ export default {
           process.env.JWT_SECRET_KEY
         );
 
-        console.log("token", token);
+        // console.log("token", token);
         // 패스워드까지 맞으면 토큰 반환
         return {
           ok: true,
