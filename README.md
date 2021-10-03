@@ -226,5 +226,6 @@ remove directory that prisma and src/movie
 ## protectResolver
 
 - api화 시켜서 context로 전달
+- protectResolver의 return 방식을 에러를 던지지말고 핸들링 가능하게 변경
 
 ## seeProfile
