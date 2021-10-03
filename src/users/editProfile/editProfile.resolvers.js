@@ -1,6 +1,6 @@
 import client from "../../client";
 import bcrypt from "bcrypt";
-import { protectResolver } from "../users.utils";
+
 export default {
   Mutation: {
     editProfile: async (
@@ -8,7 +8,8 @@ export default {
       { firstName, lastName, userName, email, password },
       context
     ) => {
-      protectResolver(context.loggedInUser);
+      context.protectResolver(context.loggedInUser);
+
       let uglyPassword = null;
       if (password) {
         uglyPassword = await bcrypt.hash(password, 10);

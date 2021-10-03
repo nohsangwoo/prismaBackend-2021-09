@@ -223,4 +223,8 @@ remove directory that prisma and src/movie
 
 ## protect way part2 about authentication
 
+## protectResolver
+
+- api화 시켜서 context로 전달
+
 ## seeProfile
