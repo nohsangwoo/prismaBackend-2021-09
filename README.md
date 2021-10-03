@@ -221,4 +221,6 @@ remove directory that prisma and src/movie
 - 토큰을 http headers로 받고 처리하기
 - 처리하는 부분을 utils 모듈화한다
 
+## protect way part2 about authentication
+
 ## seeProfile
