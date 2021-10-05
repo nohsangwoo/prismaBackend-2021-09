@@ -1,7 +1,7 @@
 {
   "watch": ["src/**/*.ts", "src/**/*.js", "nodemon.json"],
-  "exec": "babel-node src/server.js",
+  "exec": "ts-node src/server.ts",
   "delay": 2000,
-  "ext": "js json jsx mjs",
+  "ext": "js, ts, json, jsx, mjs",
   "ignore": ["src/public/*"]
 }

@@ -6,8 +6,12 @@ import { makeExecutableSchema } from "@graphql-tools/schema";
 // 즉 schema.js는 src하위에있는 모든 resolvers와 typeDefs파일들을 모아서 제공해주는 역할
 
 // 해당 파일을 불러올때 export default를 기준으로 불러온다.
-const loadedTypes = loadFilesSync(`${__dirname}/**/*.typeDefs.js`);
-const loadedResolvers = loadFilesSync(`${__dirname}/**/*.resolvers.js`);
+const loadedTypes = loadFilesSync(
+  `${__dirname}/**/*.{typeDefs.js,typeDefs.ts}`
+);
+const loadedResolvers = loadFilesSync(
+  `${__dirname}/**/*.{resolvers.js,resolvers.ts}`
+);
 
 // 여러개의 종류를 등록하고 싶다면 아래와 같이 사용하면 된다.
 // const loadedResolvers = loadFilesSync(`${__dirname}/**/*.{mutations,query,resolvers}.js`);

@@ -3,6 +3,7 @@
 require("dotenv").config(); // 위 import 방식과 같은 방법
 
 import { ApolloServer } from "apollo-server";
+import client from "./client";
 import schema from "./schema";
 import { getUser } from "./users/users.utils";
 
@@ -13,7 +14,8 @@ const server = new ApolloServer({
   context: async ({ req }) => {
     const token = String(req.headers.authorization) || "";
     return {
-      loggedInUser: await getUser(token)
+      loggedInUser: await getUser(token),
+      client: client
     };
   }
 });

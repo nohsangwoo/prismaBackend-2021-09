@@ -229,4 +229,19 @@ remove directory that prisma and src/movie
 - protectResolver의 return 방식을 에러를 던지지말고 핸들링 가능하게 변경
 - HOC방식으로 처리
 
+## typescript SETUP
+
+- tsconfig에 "esModuleInterop": true 를 추가
+- npm install typescript ts-node --save-node
+- babel.config 파일 삭제
+- 기본 실행 명령어를 "nodemon --exec ts-node src/server.ts" 로 변경
+
+## change to ts form
+
+## set context type
+
+## inject client into context
+
+## set context type with utils
+
 ## seeProfile
