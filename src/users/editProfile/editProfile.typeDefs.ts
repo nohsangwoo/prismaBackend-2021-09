@@ -1,4 +1,4 @@
-import { gql } from "apollo-server-core";
+import { gql } from "apollo-server-express";
 
 export default gql`
   type EditPrifileResult {
@@ -14,6 +14,7 @@ export default gql`
       userName: String
       email: String
       password: String
+      bio: String
     ): EditPrifileResult!
   }
 `;

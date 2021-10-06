@@ -245,3 +245,8 @@ remove directory that prisma and src/movie
 ## set context type with utils
 
 ## seeProfile
+
+## file upload with apollo - first setting up
+
+- ref: https://www.apollographql.com/docs/apollo-server/data/file-uploads/
+- npm install express, apollo-server-express, graphql-upload
