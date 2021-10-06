@@ -46,7 +46,6 @@ const resolverFn: Resolver = async (
 };
 
 const resolvers: Resolvers = {
-  // @ts-ignore
   Upload: GraphQLUpload,
   Mutation: {
     editProfile: protectedResolver(resolverFn)

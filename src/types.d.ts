@@ -1,3 +1,4 @@
+import { GraphQLUpload } from "graphql-upload";
 import { PrismaClient } from "@prisma/client";
 import { User } from ".prisma/client";
 
@@ -14,7 +15,9 @@ export type Resolver = (
 ) => any;
 
 export type Resolvers = {
-  [key: string]: {
-    [key: string]: Resolver;
-  };
+  [key: string]:
+    | {
+        [key: string]: Resolver;
+      }
+    | typeof GraphQLUpload;
 };
