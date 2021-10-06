@@ -2,7 +2,6 @@ import client from "../../client";
 import bcrypt from "bcrypt";
 import { protectedResolver } from "../users.utils";
 import { Resolver, Resolvers } from "../../types";
-
 const resolverFn: Resolver = async (
   _,
   { firstName, lastName, userName, email, password },
@@ -13,13 +12,10 @@ const resolverFn: Resolver = async (
   if (password) {
     uglyPassword = await bcrypt.hash(password, 10);
   }
-
-  // 토큰을 전달 못받았을때 early return
-
-  if (!context?.loggedInUser) {
+  if (!context.loggedInUser) {
     return {
       ok: false,
-      error: "Please log in to perform this action"
+      error: "Could not update Profile"
     };
   }
 
@@ -35,7 +31,6 @@ const resolverFn: Resolver = async (
       ...(uglyPassword && { password: uglyPassword })
     }
   });
-
   if (ok) {
     return {
       ok: true
@@ -53,3 +48,5 @@ const resolvers: Resolvers = {
     editProfile: protectedResolver(resolverFn)
   }
 };
+
+export default resolvers;
