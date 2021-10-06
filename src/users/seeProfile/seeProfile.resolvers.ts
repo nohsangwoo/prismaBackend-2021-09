@@ -1,7 +1,7 @@
 import { protectedResolver } from "./../users.utils";
 import { Resolvers, Resolver } from "../../types";
 
-const resolverFn: Resolver = async (_: any, { userName }, { client }) => {
+const resolverFn: Resolver = async (_, { userName }, { client }) => {
   try {
     return client.user.findUnique({
       where: {
