@@ -7,16 +7,14 @@ export const getUser = async (token: string) => {
     if (!token) {
       return null;
     }
-    let JWT_SECRET;
-    // Secret | GetPublicKeyOrSecret
-    // if (
-    //   process.env.JWT_SECRET_KEY &&
-    //   typeof process.env.JWT_SECRET_KEY !== "undefined"
-    // )
-    let verifiedTotken: any;
-    if (process.env.JWT_SECRET_KEY) {
-      verifiedTotken = await jwt.verify(token, process.env.JWT_SECRET_KEY);
+
+    if (!process.env.JWT_SECRET_KEY) {
+      return null;
     }
+    let verifiedTotken: any = await jwt.verify(
+      token,
+      process.env.JWT_SECRET_KEY
+    );
     if ("id" in verifiedTotken) {
       const user = await client.user.findUnique({
         where: {
