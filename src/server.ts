@@ -10,7 +10,6 @@ import { resolvers, typeDefs } from "./schema";
 import { getUser } from "./users/users.utils";
 
 // A map of functions which return data for the schema.
-const PORT = process.env.PORT;
 
 const startServer = async () => {
   const server = new ApolloServer({
@@ -36,6 +35,7 @@ const startServer = async () => {
 
   app.use("/static", express.static("uploads"));
 
+  const PORT = process.env.PORT;
   // @ts-ignore
   await new Promise(r => app.listen({ port: PORT }, r));
 

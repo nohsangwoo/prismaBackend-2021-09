@@ -2,6 +2,7 @@ import client from "../../client";
 import bcrypt from "bcrypt";
 import { protectedResolver } from "../users.utils";
 import { Resolver, Resolvers } from "../../types";
+import { GraphQLUpload } from "graphql-upload";
 const resolverFn: Resolver = async (
   _,
   { firstName, lastName, userName, email, password, bio },
@@ -45,6 +46,8 @@ const resolverFn: Resolver = async (
 };
 
 const resolvers: Resolvers = {
+  // @ts-ignore
+  Upload: GraphQLUpload,
   Mutation: {
     editProfile: protectedResolver(resolverFn)
   }
