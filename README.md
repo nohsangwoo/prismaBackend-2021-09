@@ -270,4 +270,10 @@ remove directory that prisma and src/movie
   "preinstall": "npx npm-force-resolutions",
 ```
 
-##
+## save file on backend server
+
+- production에선 절대로 하면 안되는 작업
+- 그냥 file을 client로 받아서 저장하는 일련의 과정을 학습하고 배우기위한 과정일뿐
+
+- process.cwd() // current working directory
+  프로젝트가 저장된 root path를 알려준다
