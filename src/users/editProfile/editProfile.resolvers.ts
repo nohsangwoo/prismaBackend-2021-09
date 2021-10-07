@@ -10,6 +10,10 @@ const resolverFn: Resolver = async (
   info
 ) => {
   console.log(avatar);
+  const { filename, createReadStream } = await avatar;
+  const stream = createReadStream();
+  console.log(filename, createReadStream);
+  console.log("stream)", stream);
   let uglyPassword = null;
   if (password) {
     uglyPassword = await bcrypt.hash(password, 10);

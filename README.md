@@ -253,4 +253,21 @@ remove directory that prisma and src/movie
 
 ## get image file on editProfile's avatar variable
 
-1. get file from client
+## get file from client(avatar)
+
+## fileuload에서 createStream 사용시 생기는 버그 해결법
+
+```
+ "resolutions": {
+    "fs-capacitor": "^6.2.0",
+    "graphql-upload": "^11.0.0"
+  }
+```
+
+- package.js => script 에 추가
+
+```
+  "preinstall": "npx npm-force-resolutions",
+```
+
+##
