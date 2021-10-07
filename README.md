@@ -286,3 +286,5 @@ remove directory that prisma and src/movie
 - 서버로 들어오는 모든 요청을 terminal에 찍어줌
   (일종의 request logger)
 - ref: https://www.npmjs.com/package/morgan
+
+## remove apollo-server in package.json and unusefull forder
