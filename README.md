@@ -246,10 +246,11 @@ remove directory that prisma and src/movie
 
 ## seeProfile
 
-## file upload with apollo - first setting up
+## file upload with apollo - first setting up(apollo-server-express)
 
 - ref: https://www.apollographql.com/docs/apollo-server/data/file-uploads/
 - npm install express, apollo-server-express, graphql-upload
+- express위에서 아폴로서버를 미들웨어 형식으로 돌리게 설정함
 
 ## get image file on editProfile's avatar variable
 
@@ -277,3 +278,11 @@ remove directory that prisma and src/movie
 
 - process.cwd() // current working directory
   프로젝트가 저장된 root path를 알려준다
+
+## eject apollo server and apply apllo-server-express
+
+## morgan
+
+- 서버로 들어오는 모든 요청을 terminal에 찍어줌
+  (일종의 request logger)
+- ref: https://www.npmjs.com/package/morgan
