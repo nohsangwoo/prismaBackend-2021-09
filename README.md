@@ -250,3 +250,7 @@ remove directory that prisma and src/movie
 
 - ref: https://www.apollographql.com/docs/apollo-server/data/file-uploads/
 - npm install express, apollo-server-express, graphql-upload
+
+## get image file on editProfile's avatar variable
+
+1. get file from client
