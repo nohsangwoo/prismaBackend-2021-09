@@ -288,3 +288,5 @@ remove directory that prisma and src/movie
 - ref: https://www.npmjs.com/package/morgan
 
 ## remove apollo-server in package.json and unusefull forder
+
+## add git ignore list

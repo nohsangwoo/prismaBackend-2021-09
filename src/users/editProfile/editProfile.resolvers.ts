@@ -15,7 +15,11 @@ const resolverFn: Resolver = async (
   const readStream = createReadStream();
   // 저장 경로를 만들어주는 과정
   const whiteStream = createWriteStream(
-    process.cwd() + "/src/uploads/" + filename
+    process.cwd() +
+      "/src/uploads/" +
+      context?.loggedInUser?.id +
+      Date.now() +
+      filename
   );
 
   // 저장 경로에 저장하는 작업

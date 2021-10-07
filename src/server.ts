@@ -29,15 +29,18 @@ const startServer = async () => {
   const app = express();
   const PORT = process.env.PORT;
 
+  // morgan은 로그보는 모듈이니 제일 최상단에 적용시켜줘야한다.
+  app.use(logger("tiny"));
+
   // This middleware should be added before calling `applyMiddleware`.
   app.use(graphqlUploadExpress());
 
-  app.use(logger("tiny"));
   // console.log("__dirname", __dirname);
   // 첫번째 인자 뜻 : localhost:4000/uploads
   // 두번째 인자 뜻 : localhost:4000/uploads로 접속했을때 불러오려는 실제 local위치
   // 즉 첫번째 인자는 아무렇게나 내맘대로 지정해도되는데 두번째 인자는 실제로 있는 경로를 가져와야함
-  app.use("/uploads", express.static(__dirname + "/uploads"));
+  const uploadPath = __dirname + "/uploads";
+  app.use("/uploads", express.static(uploadPath));
 
   server.applyMiddleware({ app });
   // @ts-ignore
