@@ -290,3 +290,5 @@ remove directory that prisma and src/movie
 ## remove apollo-server in package.json and unusefull forder
 
 ## add git ignore list
+
+## spliting about upload file to backend local server

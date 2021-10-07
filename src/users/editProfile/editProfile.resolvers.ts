@@ -3,34 +3,38 @@ import bcrypt from "bcrypt";
 import { protectedResolver } from "../users.utils";
 import { Resolver, Resolvers } from "../../types";
 import { GraphQLUpload } from "graphql-upload";
-// import { finished } from "stream/promises";
-import { createWriteStream } from "fs";
+import { uploadDefaultPath } from "../../server";
+import uploadToServer from "../../utils/uploadToServer";
+
 const resolverFn: Resolver = async (
   _,
   { firstName, lastName, userName, email, password, bio, avatar },
   context,
   info
 ) => {
-  const { filename, createReadStream } = await avatar;
-  const readStream = createReadStream();
-  // 저장 경로를 만들어주는 과정
-  const whiteStream = createWriteStream(
-    process.cwd() +
-      "/src/uploads/" +
-      context?.loggedInUser?.id +
-      Date.now() +
-      filename
-  );
+  let avatarUrl = undefined;
+  if (!context?.loggedInUser?.id) {
+    return {
+      ok: false,
+      error: "you need to login"
+    };
+  }
 
-  // 저장 경로에 저장하는 작업
-  readStream.pipe(whiteStream);
-  // 마무리 해줘야함 근데 왜그런지 모르겠지만 모듈 찾을수 없다고 에러남
-  // finished(whiteStream);
+  if (avatar) {
+    const uploadFileRegex = `${context?.loggedInUser?.id + Date.now()}`;
+    // 서버local에 저장하는 방법
+    avatarUrl = await uploadToServer(
+      avatar,
+      uploadDefaultPath,
+      uploadFileRegex
+    );
+  }
 
   let uglyPassword = null;
   if (password) {
     uglyPassword = await bcrypt.hash(password, 10);
   }
+
   if (!context.loggedInUser) {
     return {
       ok: false,
@@ -48,7 +52,8 @@ const resolverFn: Resolver = async (
       userName,
       email,
       bio,
-      ...(uglyPassword && { password: uglyPassword })
+      ...(uglyPassword && { password: uglyPassword }),
+      ...(avatarUrl && { avatar: avatarUrl })
     }
   });
   if (ok) {

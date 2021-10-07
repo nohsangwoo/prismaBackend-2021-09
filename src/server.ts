@@ -10,7 +10,8 @@ import { resolvers, typeDefs } from "./schema";
 import { getUser } from "./users/users.utils";
 import logger from "morgan";
 // A map of functions which return data for the schema.
-
+export const uploadDefaultPath = __dirname + "/uploads";
+// console.log("uploadDefaultPath", uploadDefaultPath);
 const startServer = async () => {
   const server = new ApolloServer({
     resolvers,
@@ -39,8 +40,7 @@ const startServer = async () => {
   // 첫번째 인자 뜻 : localhost:4000/uploads
   // 두번째 인자 뜻 : localhost:4000/uploads로 접속했을때 불러오려는 실제 local위치
   // 즉 첫번째 인자는 아무렇게나 내맘대로 지정해도되는데 두번째 인자는 실제로 있는 경로를 가져와야함
-  const uploadPath = __dirname + "/uploads";
-  app.use("/uploads", express.static(uploadPath));
+  app.use("/uploads", express.static(uploadDefaultPath));
 
   server.applyMiddleware({ app });
   // @ts-ignore
