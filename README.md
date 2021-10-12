@@ -292,3 +292,16 @@ remove directory that prisma and src/movie
 ## add git ignore list
 
 ## spliting about upload file to backend local server
+
+(uploadToServer.ts)
+
+- 쓰이지는 않을꺼지만 일단 모듈화 해줌
+
+## basic concept of followers and following
+
+- follower와 following의 기본 구조
+- self - relation 관계
+
+## self relation
+
+- ref: https://www.prisma.io/docs/concepts/components/prisma-schema/relations/self-relations

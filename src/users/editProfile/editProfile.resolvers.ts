@@ -23,11 +23,11 @@ const resolverFn: Resolver = async (
   if (avatar) {
     const uploadFileRegex = `${context?.loggedInUser?.id + Date.now()}`;
     // 서버local에 저장하는 방법
-    avatarUrl = await uploadToServer(
-      avatar,
-      uploadDefaultPath,
-      uploadFileRegex
-    );
+    avatarUrl = await uploadToServer({
+      uploadFile: avatar,
+      uploadPath: uploadDefaultPath,
+      uploadFileRegex: uploadFileRegex
+    });
   }
 
   let uglyPassword = null;

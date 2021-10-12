@@ -1,12 +1,16 @@
 // import { uploadDefaultPath } from "../server";
 
 import { createWriteStream } from "fs";
-
-const uploadToServer = async (
-  uploadFile: any,
-  uploadPath: string,
-  uploadFileRegex: string
-) => {
+interface UploadToServerType {
+  uploadFile: any;
+  uploadPath: string;
+  uploadFileRegex: string;
+}
+const uploadToServer = async ({
+  uploadFile,
+  uploadPath,
+  uploadFileRegex
+}: UploadToServerType) => {
   const { filename, createReadStream } = await uploadFile;
   const readStream = createReadStream();
 
