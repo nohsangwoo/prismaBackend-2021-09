@@ -301,7 +301,13 @@ remove directory that prisma and src/movie
 
 - follower와 following의 기본 구조
 - self - relation 관계
+- 다른 유저에게
 
 ## self relation
 
 - ref: https://www.prisma.io/docs/concepts/components/prisma-schema/relations/self-relations
+
+## followUser 기능 구현
+
+- connect대상을 지정하는 필드는 유니크한 값만 가능하다. (중복이 안되는 값으로 지정 가능)
+  (현재 user스키마를 기준으로 id,email,unsername)
