@@ -452,7 +452,7 @@ obj The previous object, which for a field on the root Query type is often not u
 seeProfile 쿼리를 실행시키면
 seeProfileResult가 resoponse값으로 오는데..
 이때
-totalFollowing 이라는 computed field가 존재하고요.
+totalFollowing 이라는 computed field가 존재한다
 
 ```
 {
@@ -472,12 +472,19 @@ totalFollowing 이라는 computed field가 존재하고요.
 ```
 
 seeProfileResult을 기준으로 totalFollowing은 하위 object이다
-totalFollwing 기준으로 seeProfileResult는 상위 objectㅇ;거
+totalFollwing 기준으로 seeProfileResult는 상위 object이고
 
 즉
 totalFollowing에서 찍은 root는
 totalFollowing 기준으로 이전오브젝트(상위 오브젝트)인 seeProfileResult가 된다
 
 왜냐하면
-totalFollowing을 호출하는 쿼리는 seeProfile의 seeProfileResult이기때문이다
+totalFollowing을 호출하는 상위object는 seeProfile의 seeProfileResult이기때문이다
+
 따라서 seeProfileResult의 결과값이 찍힌다.
+
+## computed field - totalFollowing, totalFollowers
+
+## eventual consistency?
+
+- 실시간 데이터베이스가 아니라 다른작업으로 업데이트해주는것
