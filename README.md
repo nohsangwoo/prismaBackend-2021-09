@@ -374,7 +374,7 @@ some은 좀 느슨하게 검색해주고 every는 좀 빡빡하게 검색해주�
   console.log("bFollowers", bFollowers);
 ```
 
-## pagenation
+## pagenation - offset
 
 - ref: https://www.prisma.io/docs/concepts/components/prisma-client/pagination
 - offset pagination
@@ -405,3 +405,16 @@ const results = await prisma.post.findMany({
     followers
   };
 ```
+
+## select 사용법
+
+- 가져올 필드를 선택할 수 있는 기능
+
+```
+await client.user.findUnique({
+  where: { userName },
+  select: { id: true }
+});
+```
+
+## pagenation - cursor
