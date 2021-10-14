@@ -425,3 +425,59 @@ await client.user.findUnique({
 
 - infinit scolling에 유리하다
 - 특정페이지로 바로 갈수 없기에 불편한점도 있다.(보통 게시판같은 경우 부적절할 수 있음)
+
+## computed field
+
+- 백엔드 기준으로 데이터베이스에 없지만 직접 계산해서 가상의 필드에 값을 제공하는 형태
+- 클라이언트 기준으론 해당 데이터가 마치 DB에 존재하는것과 같은 환경으로 사용 가능
+
+- 실제로 DB에 존자해는 내용이 아니라 스키마에적지 않는다
+- typeDefs에서만 타입선언 후 사용 설정
+
+resolver.ts에 작성해준다
+
+## root
+
+- graphql함수의 첫번째 인자
+- 이전에 실행된 쿼리의 결과값이다.
+- ref: https://graphql.org/learn/execution/#root-fields-resolvers
+
+```
+obj The previous object, which for a field on the root Query type is often not used.
+```
+
+이전의 오브젝트라고 하고, 자주 사용되지는 않는다고한다.
+
+즉 이번 강좌를 기준으로 제가 이해한 내용으로 설명하자면
+seeProfile 쿼리를 실행시키면
+seeProfileResult가 resoponse값으로 오는데..
+이때
+totalFollowing 이라는 computed field가 존재하고요.
+
+```
+{
+  "data": {
+    "seeProfile": {
+      "id": "1",
+      "lastName": "sangwoo",
+      "firstName": "noh",
+      "email": "nsgr12@naver.com",
+      "userName": "sangwoonoh",
+      "bio": "super super",
+      "totalFollowing": 0,
+      "totalFollowers": 666
+    }
+  }
+}
+```
+
+seeProfileResult을 기준으로 totalFollowing은 하위 object이다
+totalFollwing 기준으로 seeProfileResult는 상위 objectㅇ;거
+
+즉
+totalFollowing에서 찍은 root는
+totalFollowing 기준으로 이전오브젝트(상위 오브젝트)인 seeProfileResult가 된다
+
+왜냐하면
+totalFollowing을 호출하는 쿼리는 seeProfile의 seeProfileResult이기때문이다
+따라서 seeProfileResult의 결과값이 찍힌다.

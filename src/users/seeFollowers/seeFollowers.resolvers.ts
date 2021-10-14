@@ -2,6 +2,7 @@ import client from "../../client";
 import { Resolver } from "../../types";
 
 const resolverFn: Resolver = async (_, { userName, page }) => {
+  //   console.log("root", root);
   const ok = await client.user.findUnique({
     where: { userName },
     select: { id: true }
@@ -30,7 +31,7 @@ const resolverFn: Resolver = async (_, { userName, page }) => {
       }
     }
   });
-  console.log(followers);
+  //   console.log(followers);
   return {
     ok: true,
     followers,
