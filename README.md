@@ -374,7 +374,7 @@ some은 좀 느슨하게 검색해주고 every는 좀 빡빡하게 검색해주�
   console.log("bFollowers", bFollowers);
 ```
 
-## pagenation - offset
+## pagenation - offset(seeFollowers)
 
 - ref: https://www.prisma.io/docs/concepts/components/prisma-client/pagination
 - offset pagination
@@ -417,4 +417,11 @@ await client.user.findUnique({
 });
 ```
 
-## pagenation - cursor
+## pagenation - cursor(seeFollowing)
+
+클라이언트는 마지막으로 검색된 데이터의 순서를 기억했다가
+다음페이지를 요청할때 마지막 데이터 순서를 백엔드로 같이 전달하면
+해당 데이터의 순서를 기준으로 다음데이터부터 보여준다.
+
+- infinit scolling에 유리하다
+- 특정페이지로 바로 갈수 없기에 불편한점도 있다.(보통 게시판같은 경우 부적절할 수 있음)
