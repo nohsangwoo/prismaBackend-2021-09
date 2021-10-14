@@ -324,3 +324,84 @@ remove directory that prisma and src/movie
 - 따라서 include로 @relation관계에 있는 field내용을 가져올수있게 resolver에서설정해준다.
 - 관계에 묶여있는 다른 모델(테이블)의 값을 가져오는 방법중 한가지다
   (데이터가 많지않으면 사용해도 되는데 데이터가 많고 복잡하면 다른방법을 사용해야함)
+
+## seeFollowers - @relation관계에있는 다른 테이블 값 불러오기
+
+사용예
+
+```
+ const aFollowers = await client.user
+    .findUnique({
+      where: {
+        userName
+      }
+    })
+    .followers();
+  console.log("aFollowers", aFollowers);
+```
+
+## pagenation - two ways(offset, cursor)
+
+## relation filters
+
+- 릴레이션관계설정된 필드중 해당 연결된 테이블 안에 무엇인가 검색 조건을 걸고싶을때 사용함
+- 예를들어 유저들중 노상우를 following하는 사람들만 검색하고 싶다 할때 사용됨
+  이때 필터 조건이 "노상우" 이다.
+- https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#some
+
+every,some,none 3가지가 있음
+
+none: 필터 조건에 매치되는 모든 관계된 값을 제외하고 return해줌(except)
+every: 필더되는 조건에 완벽하게 부합되는 모든 관계된 값을 return 해준다
+(검색어: 원숭 , 데이터: 원숭이 - 검색 안됨)
+some: 필터링 되는 요소에 하나 이상이 부합되는 값을 return 해줌
+(검색어: 원숭 , 데이터: 원숭이 - 검색됨)
+
+some은 좀 느슨하게 검색해주고 every는 좀 빡빡하게 검색해주고 none은 해당 검색어가 포함 안되는것을 검색해줌
+
+사용예
+
+```
+  const bFollowers = await client.user.findMany({
+    where: {
+      following: {
+        some: {
+          userName
+        }
+      }
+    }
+  });
+  console.log("bFollowers", bFollowers);
+```
+
+## pagenation
+
+- ref: https://www.prisma.io/docs/concepts/components/prisma-client/pagination
+- offset pagination
+  사용예
+
+```
+const results = await prisma.post.findMany({
+  skip: 3,
+  take: 4,
+})
+<!-- 말그대로 먼저검색된 3개의 결과를 건너뛰고 그다음 4개의 검색결과를 가져와라 -->
+```
+
+사용예
+
+```
+ const followers = await client.user
+    .findUnique({ where: { userName } })
+    .followers({
+      take: 5,
+      //   첫번째 페이지에선 아무것도 skip할것이 없으니 -1처리를 기본으로 해준
+      skip: (page - 1) * 5
+    });
+
+  console.log(followers);
+  return {
+    ok: true,
+    followers
+  };
+```
