@@ -6,6 +6,10 @@ const resolverFn: Resolver = async (_, { userName }, { client }) => {
     return client.user.findUnique({
       where: {
         userName
+      },
+      include: {
+        following: true,
+        followers: true
       }
     });
   } catch (e) {

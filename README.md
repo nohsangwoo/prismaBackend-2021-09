@@ -311,3 +311,16 @@ remove directory that prisma and src/movie
 
 - connect대상을 지정하는 필드는 유니크한 값만 가능하다. (중복이 안되는 값으로 지정 가능)
   (현재 user스키마를 기준으로 id,email,unsername)
+
+## unFollowUser 기능 구현
+
+- connect대상을 지정하는 필드는 유니크한 값만 가능하다. (중복이 안되는 값으로 지정 가능)
+  (현재 user스키마를 기준으로 id,email,unsername)
+
+## @relation돼있는 테이블의 데이터를 가져오는 방법1 - include
+
+- @relation의 경우 기본적으로 가져올수있게 설정돼있지 않음
+  (해당 작업의 비용이 높기때문이다)
+- 따라서 include로 @relation관계에 있는 field내용을 가져올수있게 resolver에서설정해준다.
+- 관계에 묶여있는 다른 모델(테이블)의 값을 가져오는 방법중 한가지다
+  (데이터가 많지않으면 사용해도 되는데 데이터가 많고 복잡하면 다른방법을 사용해야함)
