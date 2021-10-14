@@ -488,3 +488,5 @@ totalFollowing을 호출하는 상위object는 seeProfile의 seeProfileResult이
 ## eventual consistency?
 
 - 실시간 데이터베이스가 아니라 다른작업으로 업데이트해주는것
+
+## computed field - isMe

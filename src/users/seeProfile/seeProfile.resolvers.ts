@@ -3,7 +3,6 @@ import { Resolvers, Resolver } from "../../types";
 import client from "../../client";
 
 const resolverFn: Resolver = async (root, { userName }) => {
-  console.log("_root", root);
   try {
     return client.user.findUnique({
       where: {
