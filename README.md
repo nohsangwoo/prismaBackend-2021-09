@@ -496,3 +496,9 @@ totalFollowing을 호출하는 상위object는 seeProfile의 seeProfileResult이
 ## computed field - isFollowing
 
 - 현재보고있는 profile(다른유저)을 following했는지 안했는지 확인
+
+## search user
+
+- 말그대로 user 찾기
+- ref: https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#startswith
+- startWith 방법을 사용하여 검색
