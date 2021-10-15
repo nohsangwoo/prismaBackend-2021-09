@@ -490,3 +490,9 @@ totalFollowing을 호출하는 상위object는 seeProfile의 seeProfileResult이
 - 실시간 데이터베이스가 아니라 다른작업으로 업데이트해주는것
 
 ## computed field - isMe
+
+- 현재 보고있는 profile이 내profile인지 아닌지 체크
+
+## computed field - isFollowing
+
+- 현재보고있는 profile(다른유저)을 following했는지 안했는지 확인

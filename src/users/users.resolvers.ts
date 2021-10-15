@@ -25,17 +25,37 @@ const totalFollowersResolverFn: Resolver = ({ id }: any) =>
   });
 
 const isMeResolverFn: Resolver = ({ id }, _, context) => {
-  // console.log(id, context.loggedInUser);
   if (!context.loggedInUser) {
     return false;
   }
   return id === context?.loggedInUser?.id;
 };
 
+const isFollowingFn: Resolver = async ({ id }, _, { loggedInUser }) => {
+  if (!loggedInUser) {
+    return false;
+  }
+  const exists = await client.user.count({
+    where: {
+      id: id,
+      followers: {
+        some: {
+          id: loggedInUser.id
+        }
+      }
+    }
+  });
+
+  const result = Boolean(exists);
+
+  return result;
+};
+
 export default {
   User: {
     totalFollowing: totalFollowingResolverFn,
     totalFollowers: totalFollowersResolverFn,
-    isMe: protectedResolver(isMeResolverFn)
+    isMe: protectedResolver(isMeResolverFn),
+    isFollowing: isFollowingFn
   }
 };
