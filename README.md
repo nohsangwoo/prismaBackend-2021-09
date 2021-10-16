@@ -502,3 +502,5 @@ totalFollowing을 호출하는 상위object는 seeProfile의 seeProfileResult이
 - 말그대로 user 찾기
 - ref: https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#startswith
 - startWith 방법을 사용하여 검색
+
+## set photo and hashtable model
