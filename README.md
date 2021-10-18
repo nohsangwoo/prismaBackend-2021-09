@@ -504,3 +504,7 @@ totalFollowing을 호출하는 상위object는 seeProfile의 seeProfileResult이
 - startWith 방법을 사용하여 검색
 
 ## set photo and hashtable model
+
+- do migrate process
+
+## uploadPhoto resolver
