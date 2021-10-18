@@ -508,3 +508,14 @@ totalFollowing을 호출하는 상위object는 seeProfile의 seeProfileResult이
 - do migrate process
 
 ## uploadPhoto resolver
+
+## get hashtag with regular expression
+
+- ref: https://www.regexpal.com/
+
+## connectOrCreate
+
+- relation 관계에있는 대상의 테이블에 값이 존재하면 connect 로 연결해주고 없으면 값을 생성 후 연결해준다.
+- ref: https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#connectorcreate
+
+## 다른 테이블(model)과 관계상태에있는 field를 반환받을때에는 computed field에 추가 해줘야함
