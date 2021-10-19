@@ -543,3 +543,37 @@ totalFollowing을 호출하는 상위object는 seeProfile의 seeProfileResult이
 ## serachPhotos
 
 - keyword로 photo의 caption중 일부만 일치해도 검색해줌(contain 사용)
+
+## editPhoto
+
+- photo 내용 수정
+- disconnect를 이용하여 기존의 tag들과 연결 끊어줌
+
+disconnect예시
+
+```
+  disconnect: [ { hashtag: '#watermelon' }, { hashtag: '#pineapple' } ]
+```
+
+connect예시
+
+```
+connect: [
+  {
+    where: {
+      hashtag:"hashtag1"
+    },
+    create: {
+      hashtag:"hashtag1"
+    }
+  },
+  {
+    where: {
+      hashtag:"hashtag2"
+    },
+    create: {
+      hashtag:"hashtag2"
+    }
+  }
+]
+```
