@@ -539,3 +539,7 @@ totalFollowing을 호출하는 상위object는 seeProfile의 seeProfileResult이
 ## user - photos computed filed
 
 - transfer to args and apply pagination with cursor way
+
+## serachPhotos
+
+- keyword로 photo의 caption중 일부만 일치해도 검색해줌(contain 사용)
