@@ -45,10 +45,29 @@ const isFollowingFn: Resolver = async ({ id }, _, { loggedInUser }) => {
       }
     }
   });
-
   const result = Boolean(exists);
-
   return result;
+};
+
+const photosResolverFn: Resolver = async ({ id }, { endCursor }) => {
+  return client.user
+    .findUnique({
+      where: {
+        id: id
+      },
+      select: {
+        photos: true
+      }
+    })
+    .photos({
+      take: 5,
+      skip: endCursor ? 1 : 0,
+      ...(endCursor && {
+        cursor: {
+          id: endCursor
+        }
+      })
+    });
 };
 
 export default {
@@ -56,6 +75,7 @@ export default {
     totalFollowing: totalFollowingResolverFn,
     totalFollowers: totalFollowersResolverFn,
     isMe: protectedResolver(isMeResolverFn),
-    isFollowing: isFollowingFn
+    isFollowing: isFollowingFn,
+    photos: photosResolverFn
   }
 };

@@ -535,3 +535,7 @@ totalFollowing을 호출하는 상위object는 seeProfile의 seeProfileResult이
 ## hashtag - photos computed filed에 args전달하는 방법
 
 - and apply pagination with cursor way
+
+## user - photos computed filed
+
+- transfer to args and apply pagination with cursor way
