@@ -1,7 +1,7 @@
 import client from "../../client";
 import { Resolver } from "../../types";
 
-const seePhotoFn: Resolver = async (_, { id }) => {
+const resolverFn: Resolver = async (_, { id }) => {
   return client.photo.findUnique({
     where: {
       id
@@ -11,6 +11,6 @@ const seePhotoFn: Resolver = async (_, { id }) => {
 
 export default {
   Query: {
-    seePhoto: seePhotoFn
+    seePhoto: resolverFn
   }
 };

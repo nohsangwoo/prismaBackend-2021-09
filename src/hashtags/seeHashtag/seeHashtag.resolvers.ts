@@ -1,7 +1,7 @@
 import client from "../../client";
 import { Resolver } from "../../types";
 
-const seeHashtagResolverFn: Resolver = async (_, { hashtag }) => {
+const resolverFn: Resolver = async (_, { hashtag }) => {
   return client.hashtag.findUnique({
     where: {
       hashtag
@@ -11,6 +11,6 @@ const seeHashtagResolverFn: Resolver = async (_, { hashtag }) => {
 
 export default {
   Query: {
-    seeHashtag: seeHashtagResolverFn
+    seeHashtag: resolverFn
   }
 };
