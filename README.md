@@ -497,7 +497,7 @@ totalFollowing을 호출하는 상위object는 seeProfile의 seeProfileResult이
 
 - 현재보고있는 profile(다른유저)을 following했는지 안했는지 확인
 
-## search user
+## search user Resolvers
 
 - 말그대로 user 찾기
 - ref: https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#startswith
@@ -507,7 +507,7 @@ totalFollowing을 호출하는 상위object는 seeProfile의 seeProfileResult이
 
 - do migrate process
 
-## uploadPhoto
+## uploadPhoto Resolvers
 
 - 사진 업로드
 
@@ -522,6 +522,16 @@ totalFollowing을 호출하는 상위object는 seeProfile의 seeProfileResult이
 
 ## 다른 테이블(model)과 관계상태에있는 field를 반환받을때에는 computed field에 추가 해줘야함
 
-## seePhoto
+## seePhoto Resolvers
 
 - id를 기준으로 특정 사진 검색
+
+## seeHashtag Resovers
+
+- seeHashtags
+
+## hashtag - totalPhotos - computed field
+
+## hashtag - photos computed filed에 args전달하는 방법
+
+- and apply pagination with cursor way
