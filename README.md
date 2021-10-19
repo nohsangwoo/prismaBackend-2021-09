@@ -507,7 +507,9 @@ totalFollowing을 호출하는 상위object는 seeProfile의 seeProfileResult이
 
 - do migrate process
 
-## uploadPhoto resolver
+## uploadPhoto
+
+- 사진 업로드
 
 ## get hashtag with regular expression
 
@@ -519,3 +521,7 @@ totalFollowing을 호출하는 상위object는 seeProfile의 seeProfileResult이
 - ref: https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#connectorcreate
 
 ## 다른 테이블(model)과 관계상태에있는 field를 반환받을때에는 computed field에 추가 해줘야함
+
+## seePhoto
+
+- id를 기준으로 특정 사진 검색
