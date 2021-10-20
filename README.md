@@ -577,3 +577,13 @@ connect: [
   }
 ]
 ```
+
+## create Like model
+
+- ref: https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#unique-1
+- 좋아요기능은 유저가 특정한 사진을 한번만 좋아요 관계를 가져야하니 [좋아요를 누른 유저, 좋아요 눌림을 당한 사진]의 조합이 동시에 unique해야할때 @@unique를 사용한다.
+  즉[userid와 photoid]는 하나의 세트가 돼서 한번 지정된 세트는 다시한번 지정할 수 없다.
+
+## toggleLike
+
+- 좋아요와 좋아요 해제 기능

@@ -10,13 +10,13 @@ export default gql`
     bio: String
     avatar: String
     photos(endCursor: Int): [Photo]
-    createdAt: String!
-    updatedAt: String!
     following: [User]
     followers: [User]
     totalFollowing: Int!
     totalFollowers: Int!
     isMe: Boolean!
     isFollowing: Boolean!
+    createdAt: String!
+    updatedAt: String!
   }
 `;

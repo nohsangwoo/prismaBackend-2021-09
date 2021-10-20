@@ -33,7 +33,7 @@ const resolverFn: Resolver = async (_, { id, caption }, { loggedInUser }) => {
     };
   }
 
-  const result = await client.photo.update({
+  await client.photo.update({
     where: {
       id
     },
@@ -45,7 +45,8 @@ const resolverFn: Resolver = async (_, { id, caption }, { loggedInUser }) => {
       }
     }
   });
-  return { ok: true };
+  const result = { ok: true };
+  return result;
 };
 
 export default {
