@@ -619,3 +619,8 @@ connect: [
 ## computed filed - photo - commentNumber, comments
 
 ## computed filed - user - commentNumber, comments
+
+## seePhotoComments
+
+- photo에 달려있는 모든 comments를 검색
+- pagination 적용
