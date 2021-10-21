@@ -86,14 +86,21 @@ const commentNumberResolverFn: Resolver = async ({ id }) => {
   });
 };
 
-const commentsResolverFn: Resolver = async ({ id }) => {
+const commentsResolverFn: Resolver = async ({ id }, { endCursor }) => {
   return client.comment.findMany({
     where: {
       userId: id
     },
     include: {
       photo: true
-    }
+    },
+    take: 5,
+    skip: endCursor ? 1 : 0,
+    ...(endCursor && {
+      cursor: {
+        id: endCursor
+      }
+    })
   });
 };
 

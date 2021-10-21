@@ -18,7 +18,7 @@ export default gql`
     isMe: Boolean!
     isFollowing: Boolean!
     commentNumber: Int!
-    comments: [Comment]
+    comments(endCursor: Int): [Comment]
     createdAt: String!
     updatedAt: String!
   }
