@@ -41,11 +41,42 @@ const commentsResolverFn: Resolver = async ({ id }) => {
   });
 };
 
+const isMineResolverFn: Resolver = async ({ userId }, _, { loggedInUser }) => {
+  if (!loggedInUser) {
+    return false;
+  }
+  return userId === loggedInUser.id;
+};
+
+const isLikedResolverFn: Resolver = async ({ id }, _, { loggedInUser }) => {
+  if (!loggedInUser) {
+    return false;
+  }
+  const ok = await client.like.findUnique({
+    where: {
+      userId_photoId: {
+        userId: loggedInUser?.id,
+        photoId: id
+      }
+    },
+    select: {
+      id: true
+    }
+  });
+
+  if (ok) {
+    return true;
+  }
+  return false;
+};
+
 export default {
   Photo: {
     user: userResolverFn,
     hashtags: hashTagsResolverFn,
     commentNumber: commentNumberResolverFn,
-    comments: commentsResolverFn
+    comments: commentsResolverFn,
+    isMine: isMineResolverFn,
+    isLiked: isLikedResolverFn
   }
 };

@@ -624,3 +624,7 @@ connect: [
 
 - photo에 달려있는 모든 comments를 검색
 - pagination 적용
+
+## isMine,isLiked - photo - computed field
+
+- photo의 typeDefs에는 선언 안됐지만, prisma schema에선 photo가 userId를 가지고있다. 해서 computed field에서 전달받아 사용 가능하다
