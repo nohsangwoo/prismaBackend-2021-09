@@ -26,8 +26,8 @@ const resolverFn: Resolver = async (_, { id }, { loggedInUser }) => {
   const like = await client.like.findUnique({
     where: {
       userId_photoId: {
-        userId: id,
-        photoId: loggedInUser?.id
+        userId: loggedInUser?.id,
+        photoId: id
       }
     }
   });
@@ -38,7 +38,7 @@ const resolverFn: Resolver = async (_, { id }, { loggedInUser }) => {
     await client.like.delete({
       where: {
         userId_photoId: {
-          userId: loggedInUser.id,
+          userId: loggedInUser?.id,
           photoId: id
         }
       }
