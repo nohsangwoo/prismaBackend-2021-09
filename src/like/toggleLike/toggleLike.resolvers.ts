@@ -22,26 +22,22 @@ const resolverFn: Resolver = async (_, { id }, { loggedInUser }) => {
     };
   }
 
+  const likeWhere = {
+    userId_photoId: {
+      userId: loggedInUser?.id,
+      photoId: id
+    }
+  };
   // 로그인한 유저와 좋아요할 대상의 photo unique set가 존재하는지 확인
   const like = await client.like.findUnique({
-    where: {
-      userId_photoId: {
-        userId: loggedInUser?.id,
-        photoId: id
-      }
-    }
+    where: likeWhere
   });
 
   // 존재하면 좋아요 해제
   // 존재하지 않으면 좋아요
   if (like) {
     await client.like.delete({
-      where: {
-        userId_photoId: {
-          userId: loggedInUser?.id,
-          photoId: id
-        }
-      }
+      where: likeWhere
     });
   } else {
     await client.like.create({
