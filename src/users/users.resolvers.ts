@@ -24,11 +24,11 @@ const totalFollowersResolverFn: Resolver = ({ id }: any) =>
     }
   });
 
-const isMeResolverFn: Resolver = ({ id }, _, context) => {
-  if (!context.loggedInUser) {
+const isMeResolverFn: Resolver = ({ id }, _, { loggedInUser }) => {
+  if (!loggedInUser) {
     return false;
   }
-  return id === context?.loggedInUser?.id;
+  return id === loggedInUser?.id;
 };
 
 const isFollowingFn: Resolver = async ({ id }, _, { loggedInUser }) => {
