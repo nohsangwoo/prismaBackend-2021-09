@@ -11,8 +11,9 @@ const resolverFn: Resolver = async (_, { endCursor }, { loggedInUser }) => {
     where: {
       OR: [
         {
+          // 로그인한 유저가 following하는 사람들
           user: {
-            following: {
+            followers: {
               some: {
                 id: loggedInUser.id
               }
