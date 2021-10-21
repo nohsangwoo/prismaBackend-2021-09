@@ -17,6 +17,8 @@ export default gql`
     totalFollowers: Int!
     isMe: Boolean!
     isFollowing: Boolean!
+    commentNumber: Int!
+    comments: [Comment]
     createdAt: String!
     updatedAt: String!
   }

@@ -617,3 +617,5 @@ connect: [
 3. 댓글내용을 payload에 update
 
 ## computed filed - photo - commentNumber, comments
+
+## computed filed - user - commentNumber, comments

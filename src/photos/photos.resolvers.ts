@@ -33,7 +33,7 @@ const commentNumberResolverFn: Resolver = async ({ id }) => {
 const commentsResolverFn: Resolver = async ({ id }) => {
   return client.comment.findMany({
     where: {
-      userId: id
+      photoId: id
     },
     include: {
       user: true

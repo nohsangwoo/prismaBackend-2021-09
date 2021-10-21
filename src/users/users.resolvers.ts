@@ -78,6 +78,25 @@ const likesResolverFn: Resolver = async ({ id }) => {
   });
 };
 
+const commentNumberResolverFn: Resolver = async ({ id }) => {
+  return client.comment.count({
+    where: {
+      userId: id
+    }
+  });
+};
+
+const commentsResolverFn: Resolver = async ({ id }) => {
+  return client.comment.findMany({
+    where: {
+      userId: id
+    },
+    include: {
+      photo: true
+    }
+  });
+};
+
 export default {
   User: {
     totalFollowing: totalFollowingResolverFn,
@@ -85,6 +104,8 @@ export default {
     isMe: protectedResolver(isMeResolverFn),
     isFollowing: isFollowingFn,
     photos: photosResolverFn,
-    likes: likesResolverFn
+    likes: likesResolverFn,
+    commentNumber: commentNumberResolverFn,
+    comments: commentsResolverFn
   }
 };
