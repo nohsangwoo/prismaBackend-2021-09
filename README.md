@@ -602,5 +602,8 @@ connect: [
   첫번째 검색조건 내가 following하는 모든 user의 photo
   두번째 검색조건 내가 upload한 photo
 - 전체 photo 검색(pagination 적용)
-
 - orderBy (정렬)
+
+## set comment model
+
+## comment - isMine computed filed
