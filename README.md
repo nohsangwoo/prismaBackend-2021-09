@@ -615,3 +615,5 @@ connect: [
 1. 생성하려는 댓글에 로그인한 유저id를 연결
 2. 생성하려는 댓글에 댓글을 작성하려는 사진의 id를 연결
 3. 댓글내용을 payload에 update
+
+## computed filed - photo - commentNumber, comments

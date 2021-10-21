@@ -11,6 +11,7 @@ const isMineResolverFn: Resolver = async ({ userId }, _, { loggedInUser }) => {
   const result = userId === loggedInUser.id;
   return result;
 };
+
 export default {
   Comment: {
     isMine: isMineResolverFn

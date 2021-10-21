@@ -21,9 +21,31 @@ const hashTagsResolverFn: Resolver = async ({ id }) => {
     }
   });
 };
+
+const commentNumberResolverFn: Resolver = async ({ id }) => {
+  return client.comment.count({
+    where: {
+      photoId: id
+    }
+  });
+};
+
+const commentsResolverFn: Resolver = async ({ id }) => {
+  return client.comment.findMany({
+    where: {
+      userId: id
+    },
+    include: {
+      user: true
+    }
+  });
+};
+
 export default {
   Photo: {
     user: userResolverFn,
-    hashtags: hashTagsResolverFn
+    hashtags: hashTagsResolverFn,
+    commentNumber: commentNumberResolverFn,
+    comments: commentsResolverFn
   }
 };
