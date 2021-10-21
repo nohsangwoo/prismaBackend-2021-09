@@ -70,12 +70,21 @@ const photosResolverFn: Resolver = async ({ id }, { endCursor }) => {
     });
 };
 
+const likesResolverFn: Resolver = async ({ id }) => {
+  return client.like.findMany({
+    where: {
+      userId: id
+    }
+  });
+};
+
 export default {
   User: {
     totalFollowing: totalFollowingResolverFn,
     totalFollowers: totalFollowersResolverFn,
     isMe: protectedResolver(isMeResolverFn),
     isFollowing: isFollowingFn,
-    photos: photosResolverFn
+    photos: photosResolverFn,
+    likes: likesResolverFn
   }
 };

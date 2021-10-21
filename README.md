@@ -591,3 +591,7 @@ connect: [
 ## seePhotoLikes
 
 - 해당 사진에 좋아요 누른 user목록을 가져온다.
+
+## like - photo computed filed
+
+## user - likes computed filed
