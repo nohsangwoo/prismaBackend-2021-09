@@ -587,3 +587,7 @@ connect: [
 ## toggleLike
 
 - 좋아요와 좋아요 해제 기능
+
+## seePhotoLikes
+
+- 해당 사진에 좋아요 누른 user목록을 가져온다.
