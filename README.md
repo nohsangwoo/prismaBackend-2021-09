@@ -652,3 +652,29 @@ connect: [
 - info
 - mutation return form에 맞춰서 에러 핸들링하고있는데 이걸 query form에 맞춰서 에러핸들링 할 수 있도록 수정해줌
 - info에는 요청된 정보가 들어와있음.
+
+## upload to S3
+
+- npm install aws-sdk
+  ref: https://www.npmjs.com/package/aws-sdk
+
+# aws 에서 업로드할수잇는 api key 생성
+
+- aws.com -> IAM -> 사용자 -> 사용자 추가
+  사용자이름: prismaUploader
+  access type: programmatic access 선택(프로그램이 이 유저를 사용하겠다는 의미)
+- next step 사용자 추가
+  attach existing policies directly(기존 정책 직접 연결) 선택
+  s3FullAccess 검색후 추가
+- next step (태그 추가)
+  설정할 내용 없음
+- next step(review)
+  설정내용 확인
+- next step(사용자 만들기)
+  일반액세스키와 비밀 액세스키를 알려준다
+  (비밀 액세스키를 딱 한번만 보여주니 어디다 잘 적어두자)
+  (각각 .env파일 안에 AWS_KEY, AWS_SECRET_KEY로 저장해둔다 )
+
+## uploadToS3
+
+- shared.utils.ts에 작성

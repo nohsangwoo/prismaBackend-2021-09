@@ -1,6 +1,15 @@
-// import { uploadDefaultPath } from "../server";
-
 import { createWriteStream } from "fs";
+
+// 사용법
+// import { uploadDefaultPath } from "../server";
+// const uploadFileRegex = `${context?.loggedInUser?.id + Date.now()}`;
+// 서버local에 저장하는 방법
+// avatarUrl = await uploadToServer({
+//   uploadFile: avatar,
+//   uploadPath: uploadDefaultPath,
+//   uploadFileRegex: uploadFileRegex
+// });
+
 interface UploadToServerType {
   uploadFile: any;
   uploadPath: string;

@@ -5,15 +5,16 @@ import { Resolver, Resolvers } from "../../types";
 import { GraphQLUpload } from "graphql-upload";
 import { uploadDefaultPath } from "../../server";
 import uploadToServer from "../../utils/uploadToServer";
+import { uploadToS3 } from "../../shared/shared.utils";
 
 const resolverFn: Resolver = async (
   _,
   { firstName, lastName, userName, email, password, bio, avatar },
-  context,
+  { loggedInUser },
   info
 ) => {
   let avatarUrl = undefined;
-  if (!context?.loggedInUser?.id) {
+  if (!loggedInUser?.id) {
     return {
       ok: false,
       error: "you need to login"
@@ -21,13 +22,7 @@ const resolverFn: Resolver = async (
   }
 
   if (avatar) {
-    const uploadFileRegex = `${context?.loggedInUser?.id + Date.now()}`;
-    // 서버local에 저장하는 방법
-    avatarUrl = await uploadToServer({
-      uploadFile: avatar,
-      uploadPath: uploadDefaultPath,
-      uploadFileRegex: uploadFileRegex
-    });
+    avatarUrl = await uploadToS3(avatar, loggedInUser?.id, "avatars");
   }
 
   let uglyPassword = null;
@@ -35,7 +30,7 @@ const resolverFn: Resolver = async (
     uglyPassword = await bcrypt.hash(password, 10);
   }
 
-  if (!context.loggedInUser) {
+  if (!loggedInUser) {
     return {
       ok: false,
       error: "Could not update Profile"
@@ -44,7 +39,7 @@ const resolverFn: Resolver = async (
 
   const ok = await client.user.update({
     where: {
-      id: context.loggedInUser.id
+      id: loggedInUser.id
     },
     data: {
       firstName,
