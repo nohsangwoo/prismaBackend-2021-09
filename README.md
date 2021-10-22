@@ -642,3 +642,7 @@ connect: [
 ## add CASCADE for @relation
 
 - 테이블 주종관계에서 주테이블의 row가 삭제되면 종테이블의 row도 같이 삭제되는 관계옵션을 설정해준다.
+
+## editComment
+
+- 내가 단 댓글을 수정하는 기능
