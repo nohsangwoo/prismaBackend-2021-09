@@ -1,15 +1,16 @@
 import client from "../../client";
+import { uploadToS3 } from "../../shared/shared.utils";
 import { Resolver } from "../../types";
 import { protectedResolver } from "../../users/users.utils";
 import { processHashtags } from "../photos.utils";
 
 const resolverFn: Resolver = async (_, { file, caption }, { loggedInUser }) => {
   if (!loggedInUser) {
-    return {
-      ok: false,
-      error: String
-    };
+    return null;
   }
+
+  const fileUrl = await uploadToS3(file, loggedInUser?.id, "uploads");
+
   let hashtagObj: any[] = [];
   // save the photo with parsed hashtags
   // add the photo to the hashtags
@@ -17,13 +18,11 @@ const resolverFn: Resolver = async (_, { file, caption }, { loggedInUser }) => {
     // parse caption
     // get or create hashtags
     hashtagObj = processHashtags(caption);
-    console.log("hashtags: ", hashtagObj);
-    console.log("caption: ", caption);
   }
 
   const result = await client.photo.create({
     data: {
-      file,
+      file: fileUrl,
       caption,
       user: {
         connect: {

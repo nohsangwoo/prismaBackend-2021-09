@@ -678,3 +678,5 @@ connect: [
 ## uploadToS3
 
 - shared.utils.ts에 작성
+
+- editProfile, uploadPhoto

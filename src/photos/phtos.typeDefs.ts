@@ -1,10 +1,11 @@
 import { gql } from "apollo-server-express";
 
 export default gql`
+  scalar Upload
   type Photo {
     id: Int!
     user: User!
-    file: String!
+    file: Upload!
     caption: String
     likes: Int!
     commentNumber: Int!
