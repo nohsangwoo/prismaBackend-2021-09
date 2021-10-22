@@ -628,3 +628,17 @@ connect: [
 ## isMine,isLiked - photo - computed field
 
 - photo의 typeDefs에는 선언 안됐지만, prisma schema에선 photo가 userId를 가지고있다. 해서 computed field에서 전달받아 사용 가능하다
+
+## delete Photo
+
+- photo id로 photo 지우기
+- 이때 photo와 연결된 관계 테이블 필드를 같이 삭제
+- ref: https://www.prisma.io/docs/concepts/components/prisma-schema/relations/referential-actions#cascade
+
+## delete comment
+
+- comment id로 comment 지우기
+
+## add CASCADE for @relation
+
+- 테이블 주종관계에서 주테이블의 row가 삭제되면 종테이블의 row도 같이 삭제되는 관계옵션을 설정해준다.
