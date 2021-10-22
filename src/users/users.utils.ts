@@ -33,6 +33,11 @@ export const getUser = async (token: string) => {
 
 export const protectedResolver = (ourResolver: Resolver) => {
   return (root: any, args: any, context: Context, info: any) => {
+    const isQuery = info.operation.operation === "query";
+    if (isQuery) {
+      return null;
+    }
+
     if (!context.loggedInUser) {
       return {
         ok: false,

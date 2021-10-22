@@ -646,3 +646,9 @@ connect: [
 ## editComment
 
 - 내가 단 댓글을 수정하는 기능
+
+## fix protectedResolver for query
+
+- info
+- mutation return form에 맞춰서 에러 핸들링하고있는데 이걸 query form에 맞춰서 에러핸들링 할 수 있도록 수정해줌
+- info에는 요청된 정보가 들어와있음.
