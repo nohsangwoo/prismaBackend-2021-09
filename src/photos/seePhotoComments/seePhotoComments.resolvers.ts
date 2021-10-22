@@ -2,7 +2,7 @@ import client from "../../client";
 import { Resolver } from "../../types";
 
 const seePhotoCommentsResolverFn: Resolver = async (_, { id, endCursor }) => {
-  return client.comment.findMany({
+  const result = await client.comment.findMany({
     where: {
       photoId: id
     },
@@ -16,6 +16,10 @@ const seePhotoCommentsResolverFn: Resolver = async (_, { id, endCursor }) => {
     skip: endCursor ? 1 : 0,
     ...(endCursor && { cursor: { id: endCursor } })
   });
+
+  console.log(result);
+
+  return result;
 };
 
 export default {
