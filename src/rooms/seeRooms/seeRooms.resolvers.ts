@@ -1,5 +1,6 @@
 import client from "../../client";
 import { Resolver } from "../../types";
+import { protectedResolver } from "../../users/users.utils";
 
 const resolverFn: Resolver = async (_, __, { loggedInUser }) => {
   if (!loggedInUser) {
@@ -21,6 +22,6 @@ const resolverFn: Resolver = async (_, __, { loggedInUser }) => {
 
 export default {
   Query: {
-    seeRooms: resolverFn
+    seeRooms: protectedResolver(resolverFn)
   }
 };
