@@ -680,3 +680,9 @@ connect: [
 - shared.utils.ts에 작성
 
 - editProfile, uploadPhoto
+
+## set model message, room
+
+## seeRooms
+
+- 로그인한 사용자와 연결된 모든 방을 찾아낸다.
