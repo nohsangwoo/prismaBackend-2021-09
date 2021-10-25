@@ -687,14 +687,18 @@ connect: [
 
 - 로그인한 사용자와 연결된 모든 방을 찾아낸다.
 
-## seeRoom
-
-- 방id로 검색한다
-- 다만 이때 해당 방은 로그인한 사용자만 볼수있게 하기위해서 로그인한 유저의 id도 검색조건에 넣어준다
-
 ## sendMessage
 
 payload: String!, roomId: Int, userId: Int
 
 1. roomId를 기준으로 메시지를 보낼때(기존에 존재해는 room에 메시지를 보내는 경우)
 2. userId를 기준으로 메시지를 보낼때(기존에 room이 존재하지 않고 userId를 기준으로 새 방을 생성한 후 메시지를 보냄)
+
+## sendMessage2
+
+- connectOrCreate로 해결 하기위한 삽질 resolver
+
+## seeRoom
+
+- 방id로 검색한다
+- 다만 이때 해당 방은 로그인한 사용자만 볼수있게 하기위해서 로그인한 유저의 id도 검색조건에 넣어준다

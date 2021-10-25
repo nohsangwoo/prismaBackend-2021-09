@@ -13,7 +13,6 @@ const resolverFn: Resolver = async (
       error: "you need to login"
     };
   }
-  console.log("sendMessage");
 
   //   createMessage할때 message에서 connect용으로 사용하기위한 room
   let existRoom = null;
