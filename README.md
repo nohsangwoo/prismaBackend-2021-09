@@ -702,3 +702,11 @@ payload: String!, roomId: Int, userId: Int
 
 - 방id로 검색한다
 - 다만 이때 해당 방은 로그인한 사용자만 볼수있게 하기위해서 로그인한 유저의 id도 검색조건에 넣어준다
+
+## rooms - unreadTotal - computed field
+
+- 나에게 온 메시지중 읽지 않은 메시지를 count
+
+## readMessage
+
+- 나에게 온 메시지를 읽었다고 확인하는 처리
