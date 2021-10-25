@@ -6,7 +6,6 @@ const resolverFn: Resolver = async (_, __, { loggedInUser }) => {
   if (!loggedInUser) {
     return null;
   }
-
   const result = await client.room.findMany({
     where: {
       users: {
@@ -16,7 +15,6 @@ const resolverFn: Resolver = async (_, __, { loggedInUser }) => {
       }
     }
   });
-
   return result;
 };
 

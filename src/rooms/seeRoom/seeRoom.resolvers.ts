@@ -6,7 +6,6 @@ const resolverFn: Resolver = async (_, { id }, { loggedInUser }) => {
   if (!loggedInUser) {
     return null;
   }
-
   const result = await client.room.findFirst({
     where: {
       id,
