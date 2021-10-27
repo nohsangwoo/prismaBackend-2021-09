@@ -6,13 +6,24 @@ import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import { graphqlUploadExpress } from "graphql-upload";
 import client from "./client";
-import { resolvers, typeDefs } from "./schema";
+import { execute, subscribe } from "graphql";
+
+import { resolvers, schema, typeDefs } from "./schema";
 import { getUser } from "./users/users.utils";
 import logger from "morgan";
+import { SubscriptionServer } from "subscriptions-transport-ws";
+import { createServer } from "http";
+
 // A map of functions which return data for the schema.
 export const uploadDefaultPath = __dirname + "/uploads";
 // console.log("uploadDefaultPath", uploadDefaultPath);
+
 const startServer = async () => {
+  const app = express();
+  const PORT = process.env.PORT;
+
+  const httpServer = createServer(app);
+
   const server = new ApolloServer({
     resolvers,
     typeDefs,
@@ -22,13 +33,26 @@ const startServer = async () => {
         loggedInUser: await getUser(token),
         client: client
       };
-    }
+    },
+    plugins: [
+      {
+        async serverWillStart() {
+          return {
+            async drainServer() {
+              subscriptionServer.close();
+            }
+          };
+        }
+      }
+    ]
   });
 
-  await server.start();
+  const subscriptionServer = SubscriptionServer.create(
+    { schema, execute, subscribe },
+    { server: httpServer, path: server.graphqlPath }
+  );
 
-  const app = express();
-  const PORT = process.env.PORT;
+  await server.start();
 
   // morgan은 로그보는 모듈이니 제일 최상단에 적용시켜줘야한다.
   app.use(logger("tiny"));
@@ -43,8 +67,13 @@ const startServer = async () => {
   app.use("/uploads", express.static(uploadDefaultPath));
 
   server.applyMiddleware({ app });
+
   // @ts-ignore
-  await new Promise(r => app.listen({ port: PORT }, r));
+  await new Promise(r => httpServer.listen({ port: PORT }, r));
+
+  // httpServer.listen(PORT, () =>
+  //   console.log(`Server is now running on http://localhost:${PORT}/graphql`)
+  // );
 
   console.log(
     `🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`

@@ -711,11 +711,12 @@ payload: String!, roomId: Int, userId: Int
 
 - 나에게 온 메시지를 읽었다고 확인하는 처리
 
-## graphql Subscriptions Setup
+## graphql Subscriptions Setup - pubsub
 
 - socket 기반 실시간 데이터 교환 작동
 
 - 실무용으로는 redis popsub을 사용하라
+  ref: https://redis.io/topics/pubsub
 - 공식적으로는 이제 apollo-server에서 지원안함 따로 모듈 설치해줘야함
 - ref: https://www.npmjs.com/package/graphql-subscriptions
 
@@ -724,3 +725,10 @@ npm install graphql-subscriptions
 import { PubSub } from 'graphql-subscriptions';
 const pubsub = new PubSub();
 ```
+
+## pubsub usage - roomUpdates
+
+## ws server setting
+
+- ws 서버설치 해야함 공식 지원은 안되고 따로 라이브러리 끌어와야함
+- ref: https://www.apollographql.com/docs/apollo-server/data/subscriptions/#enabling-subscriptions

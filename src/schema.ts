@@ -19,7 +19,7 @@ const loadedResolvers = loadFilesSync(
 export const typeDefs = mergeTypeDefs(loadedTypes);
 export const resolvers = mergeResolvers(loadedResolvers);
 
-// const schema = makeExecutableSchema({ typeDefs, resolvers });
+export const schema = makeExecutableSchema({ typeDefs, resolvers });
 // /*
 //  - ref: https://www.graphql-tools.com/docs/schema-merging#print-merged-typedefs
 //    (필요한 모듈은 직접 설치해서 사용하면 됨)
