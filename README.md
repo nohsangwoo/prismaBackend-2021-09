@@ -732,3 +732,8 @@ const pubsub = new PubSub();
 
 - ws 서버설치 해야함 공식 지원은 안되고 따로 라이브러리 끌어와야함
 - ref: https://www.apollographql.com/docs/apollo-server/data/subscriptions/#enabling-subscriptions
+
+## subscription - with filter
+
+- 리스닝하는 조건을 걸수 있음
+- ref: https://www.apollographql.com/docs/apollo-server/v2/data/subscriptions/#filtering-events

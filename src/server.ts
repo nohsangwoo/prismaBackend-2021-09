@@ -28,11 +28,12 @@ const startServer = async () => {
     resolvers,
     typeDefs,
     context: async ({ req }) => {
-      const token = String(req.headers.authorization) || "";
-      return {
-        loggedInUser: await getUser(token),
-        client: client
-      };
+      if (req) {
+        const token = String(req.headers.authorization) || "";
+        return {
+          loggedInUser: await getUser(token)
+        };
+      }
     },
     plugins: [
       {
