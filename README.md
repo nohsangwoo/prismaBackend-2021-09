@@ -740,3 +740,5 @@ const pubsub = new PubSub();
 
 - 첫번째 인자는 반복해서 리스닝하려는 대상의 트리거
 - 두번째 인자는 return 값이 true인경우 subscribtion 리스닝하는 필터내용
+
+## roomUpdate early return
