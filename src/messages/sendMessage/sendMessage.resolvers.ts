@@ -103,6 +103,7 @@ const resolverFn: Resolver = async (
 
   // subscription을 위한 pubsub의 사용 방법 (roomUpdates은 subscriptions에서 정의된 이름)
   // 첫번째 인자는 연결된 트리거, 두번째 인자는 전달할 payload
+  // message에는 연결된 userId와 roomId값이 들어있다(typeDef와 schema에 없는 내용임) but connection한경우는 임의로 주는듯
   pubsub.publish(NEW_MESSAGE, { roomUpdates: { ...message } });
   return {
     ok: true,

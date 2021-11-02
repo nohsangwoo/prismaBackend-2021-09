@@ -4,11 +4,15 @@ import { NEW_MESSAGE } from "../../constants";
 import pubsub from "../../pubsub";
 import { Resolver } from "../../types";
 
-const resolverFn: Resolver = async (root, { id }, { loggedInUser }) => {
+const resolverFn: Resolver = async (
+  { roomUpdates },
+  { id },
+  { loggedInUser }
+) => {
   console.log("activate room update!");
 
-  console.log(root, id);
-  return true;
+  console.log(roomUpdates, id);
+  return roomUpdates.roomId === id;
 };
 
 export default {
