@@ -737,3 +737,6 @@ const pubsub = new PubSub();
 
 - 리스닝하는 조건을 걸수 있음
 - ref: https://www.apollographql.com/docs/apollo-server/v2/data/subscriptions/#filtering-events
+
+- 첫번째 인자는 반복해서 리스닝하려는 대상의 트리거
+- 두번째 인자는 return 값이 true인경우 subscribtion 리스닝하는 필터내용
