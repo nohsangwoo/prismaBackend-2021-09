@@ -744,3 +744,5 @@ const pubsub = new PubSub();
 ## roomUpdate early return
 
 ## subscription get authorization server setting
+
+## roomUpdate - connection subscription context

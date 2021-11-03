@@ -27,9 +27,10 @@ const startServer = async () => {
   const server = new ApolloServer({
     resolvers,
     typeDefs,
-    context: async ({ req }) => {
-      if (req) {
-        const token = String(req.headers.authorization) || "";
+    context: async ctx => {
+      // console.log("check ctx!: ", ctx);
+      if (ctx.req) {
+        const token = String(ctx.req.headers.authorization) || "";
         return {
           loggedInUser: await getUser(token)
         };
@@ -63,7 +64,7 @@ const startServer = async () => {
         }
         const loggedInUser = await getUser(authorization);
         console.log("Connected!");
-        return loggedInUser;
+        return { loggedInUser: loggedInUser };
       },
       onDisconnect(webSocket: any, context: any) {
         console.log("Disconnected!");

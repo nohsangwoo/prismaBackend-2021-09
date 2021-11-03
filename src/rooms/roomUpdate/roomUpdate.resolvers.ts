@@ -13,15 +13,11 @@ import { Resolver } from "../../types";
 const withFilterResolverFn: Resolver = async (
   { roomUpdates },
   { id },
-  context
+  { loggedInUser }
 ) => {
-  console.log("activate room update!");
-  console.log(roomUpdates, id, context, "in withFilterResolverFn");
-
-  // if (!context) {
-  //   return false;
-  // }
-
+  if (!loggedInUser) {
+    throw new Error("You need to login with");
+  }
   return true;
   // 만약 event를 준 room을 리스닝 하고있다면(subscriptions 하고있는 대상의 roomId와 subscriptions의 결과로 반환받은 id가 같다면  ==> 무결성 확인하는 작업)
   // 리스닝하고 있는 room이 우리에게 event를 준 room이 맞는지 확인해야함
@@ -50,9 +46,9 @@ const withFilterResolverFn: Resolver = async (
 };
 
 const subscribeResolverFn: Resolver = async (root, args, context, info) => {
-  console.log("activate room update! subscription");
-
-  console.log(root, args, "in subscribeResover");
+  if (!context.loggedInUser) {
+    throw new Error("You need to login with");
+  }
 
   // const room = await client.room.findFirst({
   //   where: {
