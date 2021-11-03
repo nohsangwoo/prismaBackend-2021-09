@@ -748,3 +748,5 @@ const pubsub = new PubSub();
 ## roomUpdate - connection subscription context
 
 ## roomupdate - compare condition
+
+## photos - likes - computed field

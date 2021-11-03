@@ -22,6 +22,9 @@ const hashTagsResolverFn: Resolver = async ({ id }) => {
   });
 };
 
+const likesResolverFn: Resolver = async ({ id }) =>
+  client.like.count({ where: { photoId: id } });
+
 const commentNumberResolverFn: Resolver = async ({ id }) => {
   return client.comment.count({
     where: {
@@ -74,6 +77,7 @@ export default {
   Photo: {
     user: userResolverFn,
     hashtags: hashTagsResolverFn,
+    likes: likesResolverFn,
     commentNumber: commentNumberResolverFn,
     comments: commentsResolverFn,
     isMine: isMineResolverFn,
