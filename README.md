@@ -746,3 +746,5 @@ const pubsub = new PubSub();
 ## subscription get authorization server setting
 
 ## roomUpdate - connection subscription context
+
+## roomupdate - compare condition
