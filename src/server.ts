@@ -49,7 +49,26 @@ const startServer = async () => {
   });
 
   const subscriptionServer = SubscriptionServer.create(
-    { schema, execute, subscribe },
+    {
+      schema,
+      execute,
+      subscribe,
+      onConnect: async (
+        { authorization }: any,
+        webSocket: any,
+        context: any
+      ) => {
+        if (!authorization) {
+          throw new Error("You can't listen.");
+        }
+        const loggedInUser = await getUser(authorization);
+        console.log("Connected!");
+        return loggedInUser;
+      },
+      onDisconnect(webSocket: any, context: any) {
+        console.log("Disconnected!");
+      }
+    },
     { server: httpServer, path: server.graphqlPath }
   );
 

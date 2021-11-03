@@ -13,60 +13,64 @@ import { Resolver } from "../../types";
 const withFilterResolverFn: Resolver = async (
   { roomUpdates },
   { id },
-  { loggedInUser }
+  context
 ) => {
   console.log("activate room update!");
-  if (!loggedInUser) {
-    throw new Error("You need to login");
-  }
+  console.log(roomUpdates, id, context, "in withFilterResolverFn");
+
+  // if (!context) {
+  //   return false;
+  // }
+
+  return true;
   // 만약 event를 준 room을 리스닝 하고있다면(subscriptions 하고있는 대상의 roomId와 subscriptions의 결과로 반환받은 id가 같다면  ==> 무결성 확인하는 작업)
   // 리스닝하고 있는 room이 우리에게 event를 준 room이 맞는지 확인해야함
   // 해당 방의 멤버가 맞는지 확인하는 작업임(헤당 room에서 users의 목록중 로그인한 유저의 id가 존재한다면 roomId를 반환)
-  if (roomUpdates.roomId === id) {
-    const room = await client.room.findFirst({
-      where: {
-        id,
-        users: {
-          some: {
-            id: loggedInUser.id
-          }
-        }
-      },
-      select: {
-        id: true
-      }
-    });
-    // 해당방의 멤버가 아니라는 결과가 나오면 false반환
-    if (!room) {
-      return false;
-    }
-    // 해당방의 멤버가 맞다는 결과가 나오면 true반환
-    return true;
-  }
+  // if (roomUpdates.roomId === id) {
+  //   const room = await client.room.findFirst({
+  //     where: {
+  //       id,
+  //       users: {
+  //         some: {
+  //           id: loggedInUser.id
+  //         }
+  //       }
+  //     },
+  //     select: {
+  //       id: true
+  //     }
+  //   });
+  //   // 해당방의 멤버가 아니라는 결과가 나오면 false반환
+  //   if (!room) {
+  //     return false;
+  //   }
+  //   // 해당방의 멤버가 맞다는 결과가 나오면 true반환
+  //   return true;
+  // }
 };
 
 const subscribeResolverFn: Resolver = async (root, args, context, info) => {
-  if (!context.loggedInUser) {
-    throw new Error("You need to login");
-  }
+  console.log("activate room update! subscription");
 
-  const room = await client.room.findFirst({
-    where: {
-      id: args.id,
-      users: {
-        some: {
-          id: context.loggedInUser.id
-        }
-      }
-    },
-    select: {
-      id: true
-    }
-  });
-  // 해당 방의 멤버가 아니라면 리스닝 권한 없음 에러 핸들링
-  if (!room) {
-    throw new Error("You shall not see this.");
-  }
+  console.log(root, args, "in subscribeResover");
+
+  // const room = await client.room.findFirst({
+  //   where: {
+  //     id: args.id,
+  //     users: {
+  //       some: {
+  //         id: context.loggedInUser.id
+  //       }
+  //     }
+  //   },
+  //   select: {
+  //     id: true
+  //   }
+  // });
+  // // 해당 방의 멤버가 아니라면 리스닝 권한 없음 에러 핸들링
+  // if (!room) {
+  //   throw new Error("You shall not see this.");
+  // }
 
   return withFilter(
     () => pubsub.asyncIterator(NEW_MESSAGE),

@@ -742,3 +742,5 @@ const pubsub = new PubSub();
 - 두번째 인자는 return 값이 true인경우 subscribtion 리스닝하는 필터내용
 
 ## roomUpdate early return
+
+## subscription get authorization server setting
