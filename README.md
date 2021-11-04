@@ -750,3 +750,4 @@ const pubsub = new PubSub();
 ## roomupdate - compare condition
 
 ## photos - likes - computed field
+- 해당photo에 like를 누른 사람들의 갯수
