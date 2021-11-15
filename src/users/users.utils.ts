@@ -35,9 +35,12 @@ export const protectedResolver = (ourResolver: Resolver) => {
   return (root: any, args: any, context: Context, info: any) => {
     if (!context.loggedInUser) {
       const isQuery = info.operation.operation === "query";
+      // 로그인이 안된상태에서 query가 걸린경우
       if (isQuery) {
         return null;
       }
+
+      // 로그인이 안된상태에서 mutation이 걸린경우
       return {
         ok: false,
         error: "Please log in to perform this action"
