@@ -13,6 +13,8 @@ import { getUser } from "./users/users.utils";
 import logger from "morgan";
 import { SubscriptionServer } from "subscriptions-transport-ws";
 import { createServer } from "http";
+// var cors = require('cors')
+import cors from "cors";
 
 // A map of functions which return data for the schema.
 export const uploadDefaultPath = __dirname + "/uploads";
@@ -28,7 +30,9 @@ const startServer = async () => {
     resolvers,
     typeDefs,
     context: async ctx => {
-      // console.log("check ctx!: ", ctx);
+      console.log("일반 서버 시작 부분");
+      // @ts-ignore
+      console.log("check ctx!: ", ctx.req.body);
       if (ctx.req) {
         const token = String(ctx.req.headers.authorization) || "";
         return {
@@ -59,6 +63,7 @@ const startServer = async () => {
         webSocket: any,
         context: any
       ) => {
+        console.log("subscript 시작 부분");
         if (!authorization) {
           throw new Error("You can't listen.");
         }
@@ -75,6 +80,13 @@ const startServer = async () => {
 
   await server.start();
 
+  server.applyMiddleware({
+    app,
+    path: "/specialUrl",
+    cors: { origin: true, credentials: true }
+  });
+
+  // app.use(cors({ origin: true, credentials: true }));
   // morgan은 로그보는 모듈이니 제일 최상단에 적용시켜줘야한다.
   app.use(logger("tiny"));
 

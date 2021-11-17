@@ -3,7 +3,6 @@ import { Resolvers, Resolver } from "../../types";
 import client from "../../client";
 
 const resolverFn: Resolver = async (root, args) => {
-  console.log("seeProfile bug?");
   const { userName } = args;
 
   try {
