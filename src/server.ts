@@ -27,12 +27,11 @@ const startServer = async () => {
   const httpServer = createServer(app);
 
   const server = new ApolloServer({
-    resolvers,
-    typeDefs,
+    schema,
     context: async ctx => {
       console.log("일반 서버 시작 부분");
       // @ts-ignore
-      console.log("check ctx!: ", ctx.req.body);
+      console.log("check ctx!: ", ctx.req);
       if (ctx.req) {
         const token = String(ctx.req.headers.authorization) || "";
         return {
