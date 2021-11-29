@@ -28,7 +28,7 @@ const startServer = async () => {
         context: async ctx => {
             console.log("일반 서버 시작 부분");
             // @ts-ignore
-            // console.log("check ctx!: ", ctx.req);
+            console.log("check ctx!: ", ctx.req.headers.authorization);
             if (ctx.req) {
                 const token = String(ctx.req.headers.authorization) || "";
                 return {
