@@ -1,6 +1,7 @@
 import client from "../../client";
 import { Resolver } from "../../types";
 import { protectedResolver } from "../../users/users.utils";
+import { GraphQLUpload } from "graphql-upload";
 
 const resolverFn: Resolver = async (_, { endCursor }, { loggedInUser }) => {
     if (!loggedInUser) {
@@ -32,11 +33,13 @@ const resolverFn: Resolver = async (_, { endCursor }, { loggedInUser }) => {
             createdAt: "desc"
         }
     });
+    console.log("activate see feed haha", result);
 
     return result;
 };
 
 export default {
+    Upload: GraphQLUpload,
     Query: {
         seeFeed: protectedResolver(resolverFn)
     }
