@@ -33,7 +33,6 @@ const resolverFn: Resolver = async (_, { endCursor }, { loggedInUser }) => {
             createdAt: "desc"
         }
     });
-    console.log("activate see feed haha", result);
 
     return result;
 };
