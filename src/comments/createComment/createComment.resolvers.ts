@@ -3,57 +3,56 @@ import { Resolver } from "../../types";
 import { protectedResolver } from "../../users/users.utils";
 
 const resolverFn: Resolver = async (
-  _,
-  { photoId, payload },
-  { loggedInUser }
+    _,
+    { photoId, payload },
+    { loggedInUser }
 ) => {
-  if (!loggedInUser) {
-    return {
-      ok: false,
-      error: "you need to login"
-    };
-  }
-
-  const existPhoto = await client.photo.findUnique({
-    where: {
-      id: photoId
-    },
-    select: {
-      id: true
+    if (!loggedInUser) {
+        return {
+            ok: false,
+            error: "you need to login"
+        };
     }
-  });
 
-  if (!existPhoto) {
-    return {
-      ok: false,
-      error: "Photo not found"
-    };
-  }
-  const newComment = await client.comment.create({
-    data: {
-      photo: {
-        connect: {
-          id: photoId
+    const existPhoto = await client.photo.findUnique({
+        where: {
+            id: photoId
+        },
+        select: {
+            id: true
         }
-      },
-      user: {
-        connect: {
-          id: loggedInUser.id
-        }
-      },
-      payload
+    });
+
+    if (!existPhoto) {
+        return {
+            ok: false,
+            error: "Photo not found"
+        };
     }
-  });
+    const newComment = await client.comment.create({
+        data: {
+            photo: {
+                connect: {
+                    id: photoId
+                }
+            },
+            user: {
+                connect: {
+                    id: loggedInUser.id
+                }
+            },
+            payload
+        }
+    });
 
-  const result = {
-    ok: true,
-    id: newComment.id
-  };
-  return result;
+    return {
+        ok: true,
+        id: newComment.id
+    };
 };
 
 export default {
-  Mutation: {
-    createComment: protectedResolver(resolverFn)
-  }
+    Mutation: {
+        createComment: protectedResolver(resolverFn)
+    }
 };
